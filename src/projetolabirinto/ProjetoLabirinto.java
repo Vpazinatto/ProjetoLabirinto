@@ -20,7 +20,7 @@ public class ProjetoLabirinto {
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         File file = new File("F:\\ProjetoLabirinto\\arquivos-texto\\labirinto1.txt"); 
-  
+  fasfasfas
         BufferedReader br = new BufferedReader(new FileReader(file));
         
         String labirinto;
