@@ -2,7 +2,7 @@ package projetolabirinto;
 
 public class Coordenada {
     
-    private int linha, coluna;
+    private int linha, coluna; 
     
     public void setLinha(int linha) {
         this.linha = linha;
