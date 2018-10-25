@@ -15,11 +15,19 @@ public class Pilha<X> {
         this.item = new Object [capacidade];
     }
     
-    public void insereUmItem() throws Exception {
+    public void insereUmItem(X x) throws Exception {        
+        this.topo++;
+        if (this.topo==item.length)
+            this.topo = 0;
+        this.item[topo] = x;
         this.qtd++;
     }
     
-    public void removeUmItem() throws Exception {
+    public void removeUmItem() throws Exception {       
+        this.item[this.inicio] = null;
+        this.inicio++;
+        if (this.inicio==this.item.length)
+            this.inicio=0;
         this.qtd--;
     }
     
@@ -28,5 +36,28 @@ public class Pilha<X> {
             throw new Exception ("Nada para recuperar");
 
         return (X)this.item[topo];
-    } 
+    }
+    
+    @Override
+    public String toString()
+    {
+        String ret="";
+
+        int iThis = this.inicio;
+        for (int i = 0; i < this.qtd; i++)
+        {
+            ret+= this.item[iThis];
+
+            //if (i==this.qtd-1)
+            if (iThis!=this.topo)
+                ret += ", ";
+
+            iThis++;
+            if(iThis==this.item.length)
+                iThis=0;
+        }
+        
+        return ret;
+    }
+    
 }

@@ -2,19 +2,33 @@ package projetolabirinto;
 
 public class Coordenada {
     
-    private char[][] atual;
-    private char[][] entrada;
-    private char[][] saida;
+    private int linha, coluna;
     
-    public void setAtual(char[][] atual) {
-        this.atual = atual;
+    public void setLinha(int linha) {
+        this.linha = linha;
     }
     
-    public char[][] getAtual() {
-        return this.atual;
+    public void setColuna(int coluna) {
+        this.coluna = coluna;
     }
     
-    public Coordenada() {
-        
+    public int getLinha() {
+        return this.linha;
     }
+    
+    public int getColuna() {
+        return this.coluna;
+    }
+    
+    public Coordenada(int l, int c) throws Exception {
+        this.linha = l;
+        this.coluna = c;
+    }
+    
+    @Override
+    public String toString() {
+        return "(" + this.linha + "," + this.coluna + ")";
+    }
+    
+    
 }

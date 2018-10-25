@@ -12,15 +12,15 @@ public class Labirinto {
         return this.labirinto;
     }
     
-    public Labirinto() throws IOException, Exception {
+    public Labirinto() throws Exception {
        this.montaLabirinto();
        if (this.procuraEntrada() == false)
            throw new Exception("O Labirinto não possui entrada");
     }
     
-    public void montaLabirinto() throws IOException {
+    public void montaLabirinto() throws Exception {
         
-        BufferedReader entrada = new BufferedReader (new FileReader ("F:\\ProjetoLabirinto\\arquivos-texto\\labirinto1.txt"));
+        BufferedReader entrada = new BufferedReader (new FileReader ("E:\\ProjetoLabirinto\\arquivos-texto\\labirinto1.txt"));
         int l = 0;
 
         while (entrada.ready()) {
@@ -47,6 +47,6 @@ public class Labirinto {
     }
     
     public void procuraAdjacentes() throws Exception {
-        if (labirinto[])
+        
     }
 }
