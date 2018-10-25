@@ -22,7 +22,6 @@ public class Labirinto {
         
         BufferedReader entrada = new BufferedReader (new FileReader ("F:\\ProjetoLabirinto\\arquivos-texto\\labirinto1.txt"));
         int l = 0;
-        int o=0;
 
         while (entrada.ready()) {
             String linha = entrada.readLine();
