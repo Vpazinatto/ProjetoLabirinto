@@ -45,4 +45,8 @@ public class Labirinto {
         }
         return false;
     }
+    
+    public void procuraAdjacentes() throws Exception {
+        if (labirinto[])
+    }
 }
