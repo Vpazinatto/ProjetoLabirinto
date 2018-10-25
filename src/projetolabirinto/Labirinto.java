@@ -7,7 +7,7 @@ import java.io.IOException;
 public class Labirinto {
     
     private char[][] labirinto = new char[5][8];
-    
+
     public char[][] getLabirinto() {
         return this.labirinto;
     }
@@ -22,6 +22,7 @@ public class Labirinto {
         
         BufferedReader entrada = new BufferedReader (new FileReader ("F:\\ProjetoLabirinto\\arquivos-texto\\labirinto1.txt"));
         int l = 0;
+        int o=0;
 
         while (entrada.ready()) {
             String linha = entrada.readLine();
