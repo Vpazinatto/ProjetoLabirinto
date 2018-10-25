@@ -21,6 +21,11 @@ public class Programa {
         // TODO code application logic here
         
         Labirinto labirinto = new Labirinto();
+        Pilha<Coordenada> caminho = new Pilha<Coordenada> (40);
+        Pilha<Fila<Coordenada>> possibilidades = new Pilha<Fila<Coordenada>> (40);
+        Fila<Coordenada> fila = new Fila<Coordenada> (3);
+        
+        
         
     }
 }
