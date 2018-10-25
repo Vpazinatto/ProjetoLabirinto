@@ -18,7 +18,6 @@ public class Programa {
         Fila<Coordenada> fila = new Fila<Coordenada> (3);
         
         caminho.insereUmItem(new Coordenada(1, 1));
-        
         System.out.println(caminho);
     }
 }

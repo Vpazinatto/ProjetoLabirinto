@@ -7,6 +7,7 @@ import java.io.IOException;
 public class Labirinto {
     
     private char[][] labirinto = new char[5][8];
+    private int linhaAtual, colunaAtual;
 
     public char[][] getLabirinto() {
         return this.labirinto;
@@ -46,7 +47,13 @@ public class Labirinto {
         return false;
     }
     
+    public void setAtual(int l, int c) {
+        this.linhaAtual = l;
+        this.colunaAtual = c;    
+    }
+    
     public void procuraAdjacentes() throws Exception {
-        
+        if (this.labirinto[this.linhaAtual+1][this.colunaAtual] == ' ')
+            
     }
 }

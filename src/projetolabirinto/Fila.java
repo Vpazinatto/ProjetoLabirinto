@@ -17,12 +17,29 @@ public class Fila<X> {
             this.item[i]=null;
     }
     
-    public void insereUmItem() throws Exception {
+    public void insereUmItem(X x) throws Exception {
         
+        if (x == null)
+            throw new Exception("Guardar Oque");
+        
+        if (this.qtd==this.item.length)
+            throw new Exception ("Fila cheia");
+        
+        this.fim++;
+        if (this.fim==item.length)
+            this.fim = 0;
+        this.item[fim] = x;
         this.qtd++;
     }
     
     public void removeUmItem() throws Exception {
+        if (this.qtd==0)
+            throw new Exception ("Nada para jogar fora");
+
+        this.item[this.inicio] = null;
+        this.inicio++;
+        if (this.inicio==this.item.length)
+            this.inicio=0;
         this.qtd--;
     }
     
@@ -32,5 +49,11 @@ public class Fila<X> {
 
         return (X)this.item[inicio];
     } 
+    
+    @Override
+    public String toString() {
+        String ret = "";
+        return ret;
+    }
     
 }
