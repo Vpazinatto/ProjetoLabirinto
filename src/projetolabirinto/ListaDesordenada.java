@@ -54,6 +54,10 @@ public class ListaDesordenada<X> {
         
     }
     
+    public void insiraNoFinal(X i) {
+    
+    }
+    
     public void removePrimeiro() {
         
     }
@@ -62,15 +66,11 @@ public class ListaDesordenada<X> {
     
     }
     
-    public void insiraNoFinal() {
-    
+    public X getPrimeiro() {
+        return this.prim.info;
     }
     
-    public No getPrimeiro() {
-        return this.prim;
-    }
-    
-    public No getUltimo() {
-        return this.ulti;
+    public X getUltimo() {
+        return this.ulti.info;
     }
 }
