@@ -1,41 +1,76 @@
 package projetolabirinto;
 
+import java.lang.reflect.*;
+
 public class Pilha<X> {
     
-    private Object[] item;
-    private int inicio = 0,
-                topo = -1,
-                qtd = 0;
+    private ListaDesordenada<X> lista;
     
-    public Pilha(int capacidade) throws Exception {
+    private X meuCloneDeX (X x)
+    {
+        X ret=null;
         
-        if (capacidade <= 0)
-            throw new Exception("Capacidade invalida");
-            
-        this.item = new Object [capacidade];
-    }
-    
-    public void insereUmItem(X x) throws Exception {        
-        this.topo++;
-        if (this.topo==item.length)
-            this.topo = 0;
-        this.item[topo] = x;
-        this.qtd++;
-    }
-    
-    public void removeUmItem() throws Exception {       
-        this.item[this.inicio] = null;
-        this.inicio++;
-        if (this.inicio==this.item.length)
-            this.inicio=0;
-        this.qtd--;
-    }
-    
-    public X getUmItem () throws Exception {
-        if (this.qtd==0)
-            throw new Exception ("Nada para recuperar");
+        try
+        {
+          //ret = (X)x.clone();
+            Class<?> classe = x.getClass();
+            Class<?>[] tipoParametroFormal = null; // null pq clone tem 0 parametros
+            Method metodo = classe.getMethod ("clone", tipoParametroFormal);
+            Object[] parametroReal = null; // null pq clone tem 0 parametros
+            ret = (X)metodo.invoke (x, parametroReal);
+        }
+        catch (Exception erro)
+        {}
 
-        return (X)this.item[topo];
+        return ret;
+    }
+            
+    public Pilha() throws Exception 
+    {
+        this.lista = new ListaDesordenada<X> ();
+    }
+
+    public void guardeUmItem (X x) throws Exception
+    {
+        this.insiraNoInicio (x);
+    }
+
+    public X getUmItem () throws Exception
+    {
+        return this.getPrimeiro();
+    }
+
+    public void jogueUmItemFora () throws Exception
+    {
+        this.removePrimeiro();
+    }
+    
+    private void insiraNoInicio (X x) throws Exception
+    {
+        X info = null;
+        
+        if (x instanceof Cloneable)
+            info = this.meuCloneDeX(x);
+        else
+            info = x;
+        
+        lista.insiraNoInicio(info);
+    }
+    
+    private X getPrimeiro () throws Exception
+    {
+        X ret;
+        
+        
+        return ret;
+    }
+    
+    private void removePrimeiro () throws Exception
+    {
+        lista.removePrimeiro;
+    }
+    
+    
     }
     
     @Override
