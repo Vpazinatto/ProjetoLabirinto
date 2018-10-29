@@ -54,15 +54,23 @@ public class ListaDesordenada<X> {
         
     }
     
-    public void removeInicio() {
+    public void removePrimeiro() {
         
     }
     
-    public void removeFinal() {
+    public void removeUltimo() {
     
     }
     
     public void insiraNoFinal() {
     
+    }
+    
+    public No getPrimeiro() {
+        return this.prim;
+    }
+    
+    public No getUltimo() {
+        return this.ulti;
     }
 }
