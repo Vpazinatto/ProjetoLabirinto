@@ -9,9 +9,9 @@ public class Fila <X> implements Cloneable
     private X meuCloneDeX (X x)
     {
         X ret=null;
+        
         try
         {
-          //ret = (X)x.clone();
             Class<?> classe = x.getClass();
             Class<?>[] tipoParametroFormal = null; // null pq clone tem 0 parametros
             Method metodo = classe.getMethod ("clone", tipoParametroFormal);
@@ -45,7 +45,7 @@ public class Fila <X> implements Cloneable
     }
     
     private void insiraNoFinal(X x) {
-        
+
     }
 
     private X getPrimeiro() {
@@ -67,61 +67,61 @@ public class Fila <X> implements Cloneable
 
     public boolean equals (Object obj)
     {
-		if (this==obj)
-		    return true;
+        if (this==obj)
+            return true;
 
-		if (obj==null)
-		    return false;
+        if (obj==null)
+            return false;
 
-		if (this.getClass() != obj.getClass())
-		    return false;
+        if (this.getClass() != obj.getClass())
+            return false;
 
-		Fila<X> fil = (Fila<X>)obj;
+        Fila<X> fil = (Fila<X>)obj;
 
-		if (this.qtd!=fil.qtd)
-		    return false;
+        if (this.qtd!=fil.qtd)
+            return false;
 
-		int iThis = this.inicio;
-		int iFil  = fil .inicio;
+        int iThis = this.inicio;
+        int iFil  = fil .inicio;
 
-		for (int i=0; i<this.qtd; i++)
-		{
-			if (!this.item[iThis].equals(fil.item[iFil]))
-			    return false;
+        for (int i=0; i<this.qtd; i++)
+        {
+                if (!this.item[iThis].equals(fil.item[iFil]))
+                    return false;
 
-			iThis++;
-			if(iThis==this.item.length)
-			    iThis=0;
+                iThis++;
+                if(iThis==this.item.length)
+                    iThis=0;
 
-			iFil++;
-			if(iFil==fil.item.length)
-			    iFil=0;
-		}
+                iFil++;
+                if(iFil==fil.item.length)
+                    iFil=0;
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	public String toString ()
-	{
-		String ret="";
+    public String toString ()
+    {
+        String ret="";
 
-		int iThis = this.inicio;
+        int iThis = this.inicio;
 
-		for (int i=0; i<this.qtd; i++)
-		{
-			ret += this.item[iThis];
+        for (int i=0; i<this.qtd; i++)
+        {
+            ret += this.item[iThis];
 
-		  //if (i<this.qtd-1)
-			if (iThis!=this.fim)
-			    ret += ", ";
+            //if (i<this.qtd-1)
+            if (iThis!=this.fim)
+                ret += ", ";
 
-			iThis++;
-			if(iThis==this.item.length)
-			    iThis=0;
-		}
+            iThis++;
+            if(iThis==this.item.length)
+                iThis=0;
+        }
 
-		return ret;
-	}
+        return ret;
+    }
 
         public int hashCode ()
         {
