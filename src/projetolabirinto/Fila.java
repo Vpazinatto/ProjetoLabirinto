@@ -1,59 +1,175 @@
 package projetolabirinto;
 
-public class Fila<X> {
-    
-    private Object[] item;
-    private int inicio =  0,
-                fim    = -1,
-                qtd    =  0;
-    
-    public Fila(int capacidade) throws Exception {   
-        if (capacidade <= 0)
-            throw new Exception("Capacidade invalida");
-            
-        this.item = new Object [capacidade];
+import java.lang.reflect.*;
 
-        for (int i=0; i<this.item.length; i++)
-            this.item[i]=null;
-    }
-    
-    public void insereUmItem(X x) throws Exception {
-        
-        if (x == null)
-            throw new Exception("Guardar Oque");
-        
-        if (this.qtd==this.item.length)
-            throw new Exception ("Fila cheia");
-        
-        this.fim++;
-        if (this.fim==item.length)
-            this.fim = 0;
-        this.item[fim] = x;
-        this.qtd++;
-    }
-    
-    public void removeUmItem() throws Exception {
-        if (this.qtd==0)
-            throw new Exception ("Nada para jogar fora");
+public class Fila <X> implements Cloneable
+{
+    private ListaDesordenada<X> lista;
 
-        this.item[this.inicio] = null;
-        this.inicio++;
-        if (this.inicio==this.item.length)
-            this.inicio=0;
-        this.qtd--;
-    }
-    
-    public X getUmItem () throws Exception {
-        if (this.qtd==0)
-            throw new Exception ("Nada para recuperar");
+    private X meuCloneDeX (X x)
+    {
+        X ret=null;
 
-        return (X)this.item[inicio];
-    } 
-    
-    @Override
-    public String toString() {
-        String ret = "";
+        try
+        {
+          //ret = (X)x.clone();
+            Class<?> classe = x.getClass();
+            Class<?>[] tipoParametroFormal = null; // null pq clone tem 0 parametros
+            Method metodo = classe.getMethod ("clone", tipoParametroFormal);
+            Object[] parametroReal = null; // null pq clone tem 0 parametros
+            ret = (X)metodo.invoke (x, parametroReal);
+        }
+        catch (Exception erro)
+        {}
+
         return ret;
     }
-    
+
+    public Fila () throws Exception
+    {
+        this.lista = new ListaDesordenada<X> ();
+    }
+
+    public void guardeUmItem (X x) throws Exception
+    {
+        this.insiraNoFinal (x);
+    }
+
+    public X getUmItem () throws Exception
+    {
+        return this.getPrimeiro();
+    }
+
+    public void jogueUmItemFora () throws Exception
+    {
+        this.removePrimeiro ();
+    }
+
+
+    public boolean vazia ()
+    {
+        if (this.lista.vazia()) // fazer este método em lista
+            return true;
+        else
+            return false;
+    }
+
+    public boolean equals (Object obj)
+    {
+		if (this==obj)
+		    return true;
+
+		if (obj==null)
+		    return false;
+
+		if (this.getClass() != obj.getClass())
+		    return false;
+
+		Fila<X> fil = (Fila<X>)obj;
+
+		if (this.qtd!=fil.qtd)
+		    return false;
+
+		int iThis = this.inicio;
+		int iFil  = fil .inicio;
+
+		for (int i=0; i<this.qtd; i++)
+		{
+			if (!this.item[iThis].equals(fil.item[iFil]))
+			    return false;
+
+			iThis++;
+			if(iThis==this.item.length)
+			    iThis=0;
+
+			iFil++;
+			if(iFil==fil.item.length)
+			    iFil=0;
+		}
+
+		return true;
+	}
+
+	public String toString ()
+	{
+		String ret="";
+
+		int iThis = this.inicio;
+
+		for (int i=0; i<this.qtd; i++)
+		{
+			ret += this.item[iThis];
+
+		  //if (i<this.qtd-1)
+			if (iThis!=this.fim)
+			    ret += ", ";
+
+			iThis++;
+			if(iThis==this.item.length)
+			    iThis=0;
+		}
+
+		return ret;
+	}
+
+        public int hashCode ()
+        {
+            int ret = 666; // qualquer valor diferente de zero
+
+            ret = 2*ret + new Integer(this.inicio).hashCode();
+            ret = 3*ret + new Integer(this.fim   ).hashCode();
+            ret = 5*ret + new Integer(this.qtd   ).hashCode();
+
+
+	    int iThis = this.inicio;
+
+	    for (int i=0; i<this.qtd; i++)
+	    {
+	        ret = 7*ret + this.item[iThis].hashCode();
+
+		iThis++;
+		if(iThis==this.item.length)
+		    iThis=0;
+	    }
+
+            // 2* ou 3* ou 5* ou 7* pq tais numeros sao primos
+            // pode-se usar sempre o mesmo primo, ou variar
+
+            return ret;
+    }
+
+    public Fila (Fila<X> modelo) throws Exception
+    {
+		if (modelo==null)
+		    throw new Exception ("Modelo ausente");
+
+		this.inicio = modelo.inicio;
+		this.fim    = modelo.fim;
+		this.qtd    = modelo.qtd;
+		this.item   = new Object [modelo.item.length];
+
+	    int pos = modelo.inicio;
+	    for (int i=0; i<modelo.qtd; i++)
+	    {
+	        this.item[pos] = modelo.item[pos];
+
+			pos++;
+			if(pos==modelo.item.length)
+		   		pos=0;
+	    }
+    }
+
+    public Object clone ()
+    {
+        Fila<X> ret=null;
+
+        try
+        {
+            ret = new Fila<X> (this);
+        }
+        catch (Exception erro)
+        {}
+
+        return ret;
+    }
 }

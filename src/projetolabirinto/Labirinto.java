@@ -49,7 +49,7 @@ public class Labirinto {
     
     public void setAtual(int l, int c) {
         this.linhaAtual = l;
-        this.colunaAtual = c;    
+        this.colunaAtual = c;
     }
     
     public void procuraAdjacentes() throws Exception {
