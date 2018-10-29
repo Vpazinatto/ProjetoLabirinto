@@ -59,7 +59,7 @@ public class Pilha<X> {
     
     private X getPrimeiro () throws Exception
     {
-        X ret;
+        X ret = null;
         
         
         return ret;
@@ -67,7 +67,7 @@ public class Pilha<X> {
     
     private void removePrimeiro () throws Exception
     {
-        lista.removePrimeiro;
+        lista.removePrimeiro();
     }
     
     
