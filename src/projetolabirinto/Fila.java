@@ -9,7 +9,6 @@ public class Fila <X> implements Cloneable
     private X meuCloneDeX (X x)
     {
         X ret=null;
-
         try
         {
           //ret = (X)x.clone();
@@ -43,6 +42,18 @@ public class Fila <X> implements Cloneable
     public void jogueUmItemFora () throws Exception
     {
         this.removePrimeiro ();
+    }
+    
+    private void insiraNoFinal(X x) {
+        
+    }
+
+    private X getPrimeiro() {
+        
+    }
+
+    private void removePrimeiro() {
+        
     }
 
 
