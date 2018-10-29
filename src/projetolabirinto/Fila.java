@@ -9,7 +9,6 @@ public class Fila <X> implements Cloneable
     private X meuCloneDeX (X x)
     {
         X ret=null;
-
         try
         {
           //ret = (X)x.clone();
