@@ -43,6 +43,18 @@ public class Fila <X> implements Cloneable
     {
         this.removePrimeiro ();
     }
+    
+    private void insiraNoFinal(X x) {
+        
+    }
+
+    private X getPrimeiro() {
+        
+    }
+
+    private void removePrimeiro() {
+        
+    }
 
 
     public boolean vazia ()
