@@ -6,9 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Programa {
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) throws IOException, Exception {
         // TODO code application logic here
         
