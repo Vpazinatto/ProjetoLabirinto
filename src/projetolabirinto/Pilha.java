@@ -54,7 +54,7 @@ public class Pilha<X> {
         else
             info = x;
         
-        lista.insiraNoTopo(info);
+        this.lista.insiraNoTopo(info);
     }
     
     private X getPrimeiro () throws Exception
@@ -62,7 +62,7 @@ public class Pilha<X> {
         if (lista.vazia())
             throw new Exception ("Lista vazia !");
         X ret = null;
-        X primeiro = lista.getPrimeiro();
+        X primeiro = this.lista.getPrimeiro();
         
         if (primeiro instanceof Cloneable)
             ret = this.meuCloneDeX(primeiro);
@@ -74,30 +74,25 @@ public class Pilha<X> {
     
     private void removePrimeiro () throws Exception
     {
-        lista.removePrimeiro();
+        this.lista.removePrimeiro();
     }
     
-    /*
     @Override
     public String toString()
     {
-        String ret="";
-
-        int iThis = this.inicio;
-        for (int i = 0; i < this.qtd; i++)
-        {
-            ret+= this.item[iThis];
-
-            //if (i==this.qtd-1)
-            if (iThis!=this.topo)
-                ret += ", ";
-
-            iThis++;
-            if(iThis==this.item.length)
-                iThis=0;
-        }
-        
-        return ret;
-    }*/
+        return this.lista.toString();
+    }
+    
+    @Override
+    public int hashCode()
+    {
+        return this.lista.hashCode();
+    }
+    
+    @Override
+    public boolean equals(Object obj)
+    {
+        return this.lista.equals(obj);
+    }
     
 }
