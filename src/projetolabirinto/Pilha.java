@@ -70,9 +70,7 @@ public class Pilha<X> {
         lista.removePrimeiro();
     }
     
-    
-    }
-    
+    /*
     @Override
     public String toString()
     {
@@ -93,6 +91,6 @@ public class Pilha<X> {
         }
         
         return ret;
-    }
+    }*/
     
 }

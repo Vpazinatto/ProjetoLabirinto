@@ -39,7 +39,8 @@ public class ListaDesordenada<X> {
     private No prim;
     private No ulti;
     
-    public ListaDesordenada() {
+    public ListaDesordenada() 
+    {
         this.prim = null;
         this.ulti = null;
     }
@@ -70,7 +71,8 @@ public class ListaDesordenada<X> {
             return false;
     }
     
-    public void insiraNoTopo(X i) throws Exception {  
+    public void insiraNoTopo(X i) throws Exception 
+    {  
         
         if (this.prim == null) {
             this.prim = new No(i, null);
@@ -84,23 +86,30 @@ public class ListaDesordenada<X> {
         
     }
     
-    public void insiraNoFinal(X i) throws Exception {
+    public void insiraNoFinal(X i) throws Exception 
+    {
         this.ulti = new No(i, null);
     }
     
-    public void removePrimeiro() {
-        
+                //removeTopo
+    public void removePrimeiro()  throws Exception
+    {
+        if (this.ulti == null)
+        this.ulti = this.ulti.getProx();
     }
     
-    public void removeUltimo() {
+    public void removeUltimo() throws Exception
+    {
     
     }
     
-    public X getPrimeiro() {
+    public X getPrimeiro() throws Exception
+    {
         return this.prim.info;
     }
     
-    public X getUltimo() {
+    public X getUltimo() throws Exception
+    {
         return this.ulti.info;
     }
 }
