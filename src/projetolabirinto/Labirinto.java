@@ -15,13 +15,13 @@ public class Labirinto {
     
     public Labirinto() throws Exception {
        this.montaLabirinto();
-       if (this.procuraEntrada() == false)
-           throw new Exception("O Labirinto não possui entrada");
+       if (this.procuraEntradaESaida() == false)
+           throw new Exception("Labirinto inválido !");
     }
     
     public void montaLabirinto() throws Exception {
         
-        BufferedReader entrada = new BufferedReader (new FileReader ("F:\\ProjetoLabirinto\\arquivos-texto\\labirinto1.txt"));
+        BufferedReader entrada = new BufferedReader (new FileReader ("E:\\all\\Trabs\\Git\\ProjetoLabirinto\\arquivos-texto\\labirinto1.txt"));
         int l = 0;
 
         while (entrada.ready()) {
@@ -37,12 +37,18 @@ public class Labirinto {
         entrada.close();
     }
     
-    public boolean procuraEntrada() throws Exception {
+    public boolean procuraEntradaESaida() throws Exception {
+        
+        int ret = 0;
+        
         for (int linha=0; linha<this.labirinto.length; linha++) {
             for (int coluna=0; coluna<this.labirinto.length; coluna++ ) {
-                if (labirinto[linha][coluna] == 'E')
-                    return true;
+                if (labirinto[linha][coluna] == 'E' || labirinto[linha][coluna] == 'S')
+                   ret++;
             }
+            
+            if (ret==2)
+                return true;
         }
         return false;
     }
