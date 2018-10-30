@@ -78,10 +78,8 @@ public class ListaDesordenada<X> {
             return;
         }
         
-        
-        this.ulti = new No(i, null);
-        this.ulti.setProx();
-        
+        No novo = new No(i, this.ulti);
+        this.ulti = novo;
     }
     
     public void insiraNoFinal(X i) throws Exception {
