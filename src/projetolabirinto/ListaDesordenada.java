@@ -72,8 +72,7 @@ public class ListaDesordenada<X> {
     }
     
     public void insiraNoTopo(X i) throws Exception 
-    {  
-        
+    {
         if (this.prim == null) {
             this.prim = new No(i, null);
             this.ulti = this.prim;
