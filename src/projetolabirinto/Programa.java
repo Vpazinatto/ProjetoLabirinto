@@ -11,11 +11,10 @@ public class Programa {
         // TODO code application logic here
         
         Labirinto labirinto = new Labirinto();
+        labirinto.procuraAdjacentes();
         Pilha<Coordenada> caminho = new Pilha<Coordenada> ();
         Pilha<Fila<Coordenada>> possibilidades = new Pilha<Fila<Coordenada>> ();
-        Fila<Coordenada> fila = new Fila<Coordenada> ();
         
         caminho.guardeUmItem(new Coordenada(1, 1));
-        System.out.println(caminho);
     }
 }

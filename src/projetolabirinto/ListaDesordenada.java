@@ -85,6 +85,12 @@ public class ListaDesordenada<X> {
     
     public void insiraNoFinal(X i) throws Exception 
     {
+        if (this.prim == null) {
+            this.prim = new No(i, null);
+            this.ulti = this.prim;
+            return;
+        }
+        
         this.ulti = new No(i, null);
     }
     
