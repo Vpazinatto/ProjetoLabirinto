@@ -21,7 +21,7 @@ public class Labirinto {
     
     public void montaLabirinto() throws Exception {
         
-        BufferedReader entrada = new BufferedReader (new FileReader ("E:\\all\\Trabs\\Git\\ProjetoLabirinto\\arquivos-texto\\labirinto1.txt"));
+        BufferedReader entrada = new BufferedReader (new FileReader ("F:\\ProjetoLabirinto\\arquivos-texto\\labirinto1.txt"));
         int l = 0;
 
         while (entrada.ready()) {
