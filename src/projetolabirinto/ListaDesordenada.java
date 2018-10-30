@@ -70,21 +70,22 @@ public class ListaDesordenada<X> {
             return false;
     }
     
-    public void insiraNoInicio(X i) throws Exception {
-        if (i == null)
-            throw new Exception("Erro ao inserir");
+    public void insiraNoTopo(X i) throws Exception {  
         
-        X info;
-        if (i instanceof Cloneable)
-            info = meuCloneDeX (i);
-        else
-            info = i;
+        if (this.prim == null) {
+            this.prim = new No(i, null);
+            this.ulti = this.prim;
+            return;
+        }
         
-        this.prim = new No(info, null);
+        
+        this.ulti = new No(i, null);
+        this.ulti.setProx();
+        
     }
     
-    public void insiraNoFinal(X i) {
-        
+    public void insiraNoFinal(X i) throws Exception {
+        this.ulti = new No(i, null);
     }
     
     public void removePrimeiro() {
