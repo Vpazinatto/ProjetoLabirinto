@@ -115,4 +115,68 @@ public class ListaDesordenada<X> {
     {
         return this.ulti.info;
     }
+    
+    @Override
+    public boolean equals (Object obj)
+    {
+        if (this==obj)
+            return true;
+
+        if (obj==null)
+            return false;
+
+        if (this.getClass()!=obj.getClass())
+            return false;
+
+        ListaDesordenada<X> lis=(ListaDesordenada<X>)obj;
+
+        No atualThis=this.prim, atualLis=lis.prim;
+
+        while (atualThis!=null && atualLis!=null)
+        {
+                if (!atualThis.getInfo().equals(atualLis.getInfo()))
+                        return false;
+
+                atualThis=atualThis.getProx();
+                atualLis =atualLis .getProx();
+        }
+
+        if (atualThis!=null)
+                return false;
+
+        return atualLis == null;
+    }
+
+    @Override
+    public int hashCode ()
+    {
+        int ret=666;
+
+        No atual=this.prim;
+        while (atual!=null)
+        {
+            ret = ret*7 + atual.getInfo().hashCode();
+            atual= atual.getProx();
+        }
+
+        return ret;
+    }
+    
+    @Override
+    public String toString ()
+    {
+        String ret="";
+
+        No atual=this.prim;
+        while (atual!=null)
+        {
+            ret += atual.getInfo()+" ";
+            atual= atual.getProx();
+
+        }
+
+        return ret;
+    }
+    
+    
 }

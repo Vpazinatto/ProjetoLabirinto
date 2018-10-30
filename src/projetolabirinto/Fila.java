@@ -52,16 +52,16 @@ public class Fila <X> implements Cloneable
         else
             info = x;
         
-        lista.insiraNoFinal(info);
+        this.lista.insiraNoFinal(info);
     }
 
     private X getPrimeiro() throws Exception
     {
-        if (lista.vazia())
+        if (this.lista.vazia())
             throw new Exception ("Lista vazia!");
         
         X ret = null;
-        X primeiro = lista.getPrimeiro();
+        X primeiro = this.lista.getPrimeiro();
         
         if (primeiro instanceof Cloneable)
             ret = this.meuCloneDeX(primeiro);
@@ -72,7 +72,7 @@ public class Fila <X> implements Cloneable
     }
 
     private void removePrimeiro() throws Exception  {
-        lista.removePrimeiro();
+        this.lista.removePrimeiro();
     }
 
 
@@ -83,110 +83,28 @@ public class Fila <X> implements Cloneable
         else
             return false;
     }
+    
+    public String toString ()
+    {
+        return this.lista.toString();
+    }
 
     public boolean equals (Object obj)
     {
-        if (this==obj)
-            return true;
-
-        if (obj==null)
-            return false;
-
-        if (this.getClass() != obj.getClass())
-            return false;
-
-        Fila<X> fil = (Fila<X>)obj;
-
-        if (this.qtd!=fil.qtd)
-            return false;
-
-        int iThis = this.inicio;
-        int iFil  = fil .inicio;
-
-        for (int i=0; i<this.qtd; i++)
-        {
-                if (!this.item[iThis].equals(fil.item[iFil]))
-                    return false;
-
-                iThis++;
-                if(iThis==this.item.length)
-                    iThis=0;
-
-                iFil++;
-                if(iFil==fil.item.length)
-                    iFil=0;
-        }
-
-        return true;
+        return this.lista.equals(obj);
     }
 
-    public String toString ()
+    public int hashCode ()
     {
-        String ret="";
-
-        int iThis = this.inicio;
-
-        for (int i=0; i<this.qtd; i++)
-        {
-            ret += this.item[iThis];
-
-            //if (i<this.qtd-1)
-            if (iThis!=this.fim)
-                ret += ", ";
-
-            iThis++;
-            if(iThis==this.item.length)
-                iThis=0;
-        }
-
-        return ret;
-    }
-
-        public int hashCode ()
-        {
-            int ret = 666; // qualquer valor diferente de zero
-
-            ret = 2*ret + new Integer(this.inicio).hashCode();
-            ret = 3*ret + new Integer(this.fim   ).hashCode();
-            ret = 5*ret + new Integer(this.qtd   ).hashCode();
-
-
-	    int iThis = this.inicio;
-
-	    for (int i=0; i<this.qtd; i++)
-	    {
-	        ret = 7*ret + this.item[iThis].hashCode();
-
-		iThis++;
-		if(iThis==this.item.length)
-		    iThis=0;
-	    }
-
-            // 2* ou 3* ou 5* ou 7* pq tais numeros sao primos
-            // pode-se usar sempre o mesmo primo, ou variar
-
-            return ret;
+        return this.lista.hashCode();
     }
 
     public Fila (Fila<X> modelo) throws Exception
     {
-		if (modelo==null)
-		    throw new Exception ("Modelo ausente");
-
-		this.inicio = modelo.inicio;
-		this.fim    = modelo.fim;
-		this.qtd    = modelo.qtd;
-		this.item   = new Object [modelo.item.length];
-
-	    int pos = modelo.inicio;
-	    for (int i=0; i<modelo.qtd; i++)
-	    {
-	        this.item[pos] = modelo.item[pos];
-
-			pos++;
-			if(pos==modelo.item.length)
-		   		pos=0;
-	    }
+        if (modelo==null)
+            throw new Exception ("Modelo ausente");
+        
+        this.lista = modelo.lista;
     }
 
     public Object clone ()
