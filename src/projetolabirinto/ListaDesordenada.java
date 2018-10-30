@@ -89,16 +89,22 @@ public class ListaDesordenada<X> {
         this.ulti = new No(i, null);
     }
     
-                //removeTopo
+                
     public void removePrimeiro()  throws Exception
     {
-        if (this.ulti == null)
-        this.ulti = this.ulti.getProx();
+        if (this.prim == null)    
+            throw new Exception ("Lista vazia !");
+        
+        this.prim = this.prim.getProx();
     }
     
+//removeTopo
     public void removeUltimo() throws Exception
     {
-    
+        if (this.ulti == null)
+            throw new Exception ("Lista vazia !");
+        
+        this.ulti = this.ulti.getProx();
     }
     
     public X getPrimeiro() throws Exception
