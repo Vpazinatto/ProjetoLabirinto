@@ -98,7 +98,7 @@ public class ListaDesordenada<X> {
         this.prim = this.prim.getProx();
     }
     
-//removeTopo
+    //removeTopo
     public void removeUltimo() throws Exception
     {
         if (this.ulti == null)
