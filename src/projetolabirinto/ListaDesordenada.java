@@ -73,7 +73,6 @@ public class ListaDesordenada<X> {
     
     public void insiraNoTopo(X i) throws Exception 
     {  
-        
         if (this.prim == null) {
             this.prim = new No(i, null);
             this.ulti = this.prim;
@@ -88,12 +87,11 @@ public class ListaDesordenada<X> {
     {
         this.ulti = new No(i, null);
     }
-    
                 //removeTopo
     public void removePrimeiro()  throws Exception
     {
         if (this.ulti == null)
-        this.ulti = this.ulti.getProx();
+            this.ulti = this.ulti.getProx();
     }
     
     public void removeUltimo() throws Exception

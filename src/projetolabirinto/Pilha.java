@@ -54,7 +54,7 @@ public class Pilha<X> {
         else
             info = x;
         
-        lista.insiraNoInicio(info);
+        lista.insiraNoTopo(info);
     }
     
     private X getPrimeiro () throws Exception
