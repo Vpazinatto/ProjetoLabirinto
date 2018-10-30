@@ -17,6 +17,5 @@ public class Programa {
         
         caminho.guardeUmItem(new Coordenada(1, 1));
         System.out.println(caminho);
-        
     }
 }
