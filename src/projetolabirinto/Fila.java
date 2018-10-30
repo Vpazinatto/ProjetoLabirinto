@@ -55,11 +55,23 @@ public class Fila <X> implements Cloneable
         lista.insiraNoFinal(info);
     }
 
-    private X getPrimeiro() {
+    private X getPrimeiro() throws Exception
+    {
+        if (lista.vazia())
+            throw new Exception ("Lista vazia!");
         
+        X ret = null;
+        X primeiro = lista.getPrimeiro();
+        
+        if (primeiro instanceof Cloneable)
+            ret = this.meuCloneDeX(primeiro);
+        else
+            ret = primeiro;
+        
+        return ret;
     }
 
-    private void removePrimeiro() throws Exception {
+    private void removePrimeiro() throws Exception  {
         lista.removePrimeiro();
     }
 
