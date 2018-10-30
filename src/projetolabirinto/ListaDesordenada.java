@@ -35,7 +35,7 @@ public class ListaDesordenada<X> {
             this.prox = p;
         }
     }
-    
+    //Var
     private No prim;
     private No ulti;
     
