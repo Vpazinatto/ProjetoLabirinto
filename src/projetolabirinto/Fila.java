@@ -44,16 +44,23 @@ public class Fila <X> implements Cloneable
         this.removePrimeiro ();
     }
     
-    private void insiraNoFinal(X x) {
-
+    private void insiraNoFinal(X x) throws Exception {
+        X info = null;
+        
+        if (x instanceof Cloneable)
+            info = this.meuCloneDeX(x);
+        else
+            info = x;
+        
+        lista.insiraNoFinal(info);
     }
 
     private X getPrimeiro() {
         
     }
 
-    private void removePrimeiro() {
-        
+    private void removePrimeiro() throws Exception {
+        lista.removePrimeiro();
     }
 
 
