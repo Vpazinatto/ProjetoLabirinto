@@ -65,15 +65,16 @@ public class Labirinto {
     public void procuraAdjacentes() throws Exception {
         if (this.labirinto[this.linhaAtual][this.colunaAtual+1] == ' ')
             fila.guardeUmItem(new Coordenada(this.linhaAtual, this.colunaAtual+1));
-        
-        /*if (this.labirinto[this.linhaAtual][this.colunaAtual-1] == ' ' && this.colunaAtual != 0)
+        /*              
+        if (this.labirinto[this.linhaAtual][this.colunaAtual-1] == ' ' && this.colunaAtual != 0)
             fila.guardeUmItem(new Coordenada(this.linhaAtual, this.colunaAtual-1));
         
         if (this.labirinto[this.linhaAtual+1][this.colunaAtual] == ' ')
             fila.guardeUmItem(new Coordenada(this.linhaAtual+1, this.colunaAtual));
         
         if (this.labirinto[this.linhaAtual-1][this.colunaAtual] == ' ' && this.linhaAtual != 0)
-            fila.guardeUmItem(new Coordenada(this.linhaAtual-1, this.colunaAtual));*/
+            fila.guardeUmItem(new Coordenada(this.linhaAtual-1, this.colunaAtual));
+        */
         
         System.out.println(fila);
     }
