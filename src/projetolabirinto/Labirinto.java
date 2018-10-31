@@ -25,7 +25,7 @@ public class Labirinto {
     public void montaLabirinto() throws Exception
     {
         
-        BufferedReader entrada = new BufferedReader (new FileReader ("E:\\ProjetoLabirinto\\arquivos-texto\\labirinto1.txt"));
+        BufferedReader entrada = new BufferedReader (new FileReader ("F:\\ProjetoLabirinto\\arquivos-texto\\labirinto1.txt"));
         int l = 0;
 
         while (entrada.ready()) 
@@ -67,21 +67,23 @@ public class Labirinto {
     {
         this.linhaAtual = l;
         this.colunaAtual = c;
+        
+        if (this.labirinto[l][c] != 'E')
+            this.labirinto[l][c] = '*';
     }
     
     public void procuraAdjacentes() throws Exception {
         if (this.labirinto[this.linhaAtual][this.colunaAtual+1] == ' ')
-            fila.guardeUmItem(new Coordenada(this.linhaAtual, this.colunaAtual+1));
-        /*              
-        if (this.labirinto[this.linhaAtual][this.colunaAtual-1] == ' ' && this.colunaAtual != 0)
+            fila.guardeUmItem(new Coordenada(this.linhaAtual, this.colunaAtual+1));  
+        
+        if (this.labirinto[this.linhaAtual][this.colunaAtual-1] == ' ' && this.colunaAtual-1 >= 0)
             fila.guardeUmItem(new Coordenada(this.linhaAtual, this.colunaAtual-1));
         
         if (this.labirinto[this.linhaAtual+1][this.colunaAtual] == ' ')
             fila.guardeUmItem(new Coordenada(this.linhaAtual+1, this.colunaAtual));
         
-        if (this.labirinto[this.linhaAtual-1][this.colunaAtual] == ' ' && this.linhaAtual != 0)
+        if (this.labirinto[this.linhaAtual-1][this.colunaAtual] == ' ' && this.linhaAtual-1 >= 0)
             fila.guardeUmItem(new Coordenada(this.linhaAtual-1, this.colunaAtual));
-        */
         
         System.out.println(fila);
     }
