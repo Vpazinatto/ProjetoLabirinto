@@ -10,25 +10,30 @@ public class Labirinto {
     private int linhaAtual, colunaAtual;
     private Fila<Coordenada> fila = new Fila<Coordenada> ();
 
-    public char[][] getLabirinto() {
+    public char[][] getLabirinto()
+    {
         return this.labirinto;
     }
     
-    public Labirinto() throws Exception {
+    public Labirinto() throws Exception
+    {
        this.montaLabirinto();
        if (this.procuraEntradaESaida() == false)
            throw new Exception("Labirinto inválido !");
     }
     
-    public void montaLabirinto() throws Exception {
+    public void montaLabirinto() throws Exception
+    {
         
         BufferedReader entrada = new BufferedReader (new FileReader ("E:\\ProjetoLabirinto\\arquivos-texto\\labirinto1.txt"));
         int l = 0;
 
-        while (entrada.ready()) {
+        while (entrada.ready()) 
+        {
             String linha = entrada.readLine();
 
-            for (int i=0; i<linha.length(); i++) {
+            for (int i=0; i<linha.length(); i++) 
+            {
                 labirinto[l][i] = linha.charAt(i);
                 
                 if (linha.charAt(i) == 'E')
@@ -41,7 +46,8 @@ public class Labirinto {
         entrada.close();
     }
     
-    public boolean procuraEntradaESaida() throws Exception {
+    public boolean procuraEntradaESaida() throws Exception 
+    {
         
         int ret = 0;
         
@@ -57,7 +63,8 @@ public class Labirinto {
         return false;
     }
     
-    public void setAtual(int l, int c) {
+    public void setAtual(int l, int c) 
+    {
         this.linhaAtual = l;
         this.colunaAtual = c;
     }
