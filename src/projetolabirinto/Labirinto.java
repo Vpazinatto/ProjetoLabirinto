@@ -12,8 +12,9 @@ import java.util.Scanner;
 
 public class Labirinto {
     
-    private char[][] labirinto = new char[5][8];
+    private char[][] labirinto = new char[0][0];
     private int linhaAtual, colunaAtual;
+    private int linhasQtd, colunasQtd = 0;
     private Fila<Coordenada> fila = new Fila<Coordenada> ();
 
     public char[][] getLabirinto()
@@ -31,13 +32,18 @@ public class Labirinto {
     public void montaLabirinto() throws Exception
     {
         Scanner s = new Scanner(System.in);
-        
-        System.out.print("Digite o nome do labirinto: ");
-        String file = s.nextLine();
-        
         File arquivos[];
         File arquivo = new File("arquivos-texto");
         arquivos = arquivo.listFiles();
+        
+        for(int i = 0; i < arquivos.length; i++){
+            System.out.println(arquivos[i].getName());
+        }
+        System.out.println("");
+        
+        System.out.print("Escolha um labirinto: ");
+        String file = s.nextLine();
+        
         for(int i = 0; i < arquivos.length; i++){
             if (arquivos[i].getName().equals(file))
                 file = arquivos[i].getAbsolutePath();
@@ -45,6 +51,17 @@ public class Labirinto {
 
         BufferedReader entrada = new BufferedReader (new FileReader (file));
         
+        while (entrada.ready())
+        {
+            String linha = entrada.readLine();
+            
+            while(this.colunasQtd < linha.length())
+                this.colunasQtd++;
+            
+            this.linhasQtd++;
+        }
+        
+        this.labirinto = new char[this.linhasQtd][this.colunasQtd];    
         int l = 0;
 
         while (entrada.ready())
@@ -53,7 +70,7 @@ public class Labirinto {
 
             for (int i=0; i<linha.length(); i++) 
             {
-                labirinto[l][i] = linha.charAt(i);
+                this.labirinto[l][i] = linha.charAt(i);
                 
                 if (linha.charAt(i) == 'E')
                     this.setAtual(l, i);
@@ -66,12 +83,11 @@ public class Labirinto {
     }
     
     public boolean procuraEntradaESaida() throws Exception 
-    {
-        
+    {      
         int ret = 0;
         
-        for (int linha=0; linha<this.labirinto.length; linha++) {
-            for (int coluna=0; coluna<this.labirinto.length; coluna++ ) {
+        for (int linha=0; linha<this.linhasQtd; linha++) {
+            for (int coluna=0; coluna<this.colunasQtd; coluna++ ) {
                 if (labirinto[linha][coluna] == 'E' || labirinto[linha][coluna] == 'S')
                    ret++;
             }

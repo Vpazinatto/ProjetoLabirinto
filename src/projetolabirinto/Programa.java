@@ -14,7 +14,5 @@ public class Programa {
         //labirinto.procuraAdjacentes();
         Pilha<Coordenada> caminho = new Pilha<Coordenada> ();
         Pilha<Fila<Coordenada>> possibilidades = new Pilha<Fila<Coordenada>> ();
-        
-        caminho.guardeUmItem(new Coordenada(1, 1));
     }
 }
