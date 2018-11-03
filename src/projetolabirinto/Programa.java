@@ -11,7 +11,7 @@ public class Programa {
         // TODO code application logic here
         
         Labirinto labirinto = new Labirinto();
-        labirinto.procuraAdjacentes();
+        //labirinto.procuraAdjacentes();
         Pilha<Coordenada> caminho = new Pilha<Coordenada> ();
         Pilha<Fila<Coordenada>> possibilidades = new Pilha<Fila<Coordenada>> ();
         
