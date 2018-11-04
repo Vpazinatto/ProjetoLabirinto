@@ -24,32 +24,12 @@ public class Labirinto {
     
     public Labirinto() throws Exception
     {
-       this.montaLabirinto();
-       if (this.procuraEntradaESaida() == false)
-           throw new Exception("Labirinto inválido !");
+       
     }
     
-    public void montaLabirinto() throws Exception
+    public void montaLabirinto(String labirinto) throws Exception
     {
-        Scanner s = new Scanner(System.in);
-        File arquivos[];
-        File arquivo = new File("arquivos-texto");
-        arquivos = arquivo.listFiles();
-        
-        for(int i = 0; i < arquivos.length; i++){
-            System.out.println(arquivos[i].getName());
-        }
-        System.out.println("");
-        
-        System.out.print("Escolha um labirinto: ");
-        String file = s.nextLine();
-        
-        for(int i = 0; i < arquivos.length; i++){
-            if (arquivos[i].getName().equals(file))
-                file = arquivos[i].getAbsolutePath();
-        }
-
-        BufferedReader entrada = new BufferedReader (new FileReader (file));
+        BufferedReader entrada = new BufferedReader (new FileReader (labirinto));
         
         while (entrada.ready())
         {
@@ -107,19 +87,19 @@ public class Labirinto {
             this.labirinto[l][c] = '*';
     }
     
-   /* public void procuraAdjacentes() throws Exception {
-        if (this.labirinto[this.linhaAtual][this.colunaAtual+1] == ' ' && this.colunaAtual+1 != )
+    public void procuraAdjacentes() throws Exception {
+        if (this.labirinto[this.linhaAtual][this.colunaAtual+1] == ' ')
             fila.guardeUmItem(new Coordenada(this.linhaAtual, this.colunaAtual+1));  
         
-        if (this.labirinto[this.linhaAtual][this.colunaAtual-1] == ' ' && this.colunaAtual-1 != )
+        if (this.labirinto[this.linhaAtual][this.colunaAtual-1] == ' ')
             fila.guardeUmItem(new Coordenada(this.linhaAtual, this.colunaAtual-1));
         
-        if (this.labirinto[this.linhaAtual+1][this.colunaAtual] == ' ' && this.linhaAtual+1 != -1)
+        if (this.labirinto[this.linhaAtual+1][this.colunaAtual] == ' ')
             fila.guardeUmItem(new Coordenada(this.linhaAtual+1, this.colunaAtual));
         
-        if (this.labirinto[this.linhaAtual-1][this.colunaAtual] == ' ' && this.linhaAtual-1 != -1)
+        if (this.labirinto[this.linhaAtual-1][this.colunaAtual] == ' ')
             fila.guardeUmItem(new Coordenada(this.linhaAtual-1, this.colunaAtual));
         
         System.out.println(fila);
-    }*/
+    }
 }
