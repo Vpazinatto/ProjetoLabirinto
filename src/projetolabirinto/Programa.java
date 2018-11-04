@@ -26,12 +26,13 @@ public class Programa {
         
         System.out.println("");
         
-        System.out.print("Escolha um labirinto: ");
+        System.out.print("Escolha um dos labirintos acima: ");
         String file = s.nextLine();
         
         for(int i = 0; i < arquivos.length; i++){
-            if (arquivos[i].getName().equals(file))
+            if (arquivos[i].getName().equals(file)) {
                 file = arquivos[i].getAbsolutePath();
+            }
         }
         
         labirinto.montaLabirinto(file);
