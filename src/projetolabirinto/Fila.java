@@ -31,16 +31,25 @@ public class Fila <X> implements Cloneable
 
     public void guardeUmItem (X x) throws Exception
     {
+        if (x == null)
+            throw new Exception ("Item inválido!");
+        
         this.insiraNoFinal (x);
     }
 
     public X getUmItem () throws Exception
     {
+        if (this.getPrimeiro() == null)
+            throw new Exception ("Lista vazia!");
+        
         return this.getPrimeiro();
     }
 
     public void jogueUmItemFora () throws Exception
     {
+        if (this.getPrimeiro() == null)
+            throw new Exception ("Lista vazia!");
+        
         this.removePrimeiro ();
     }
     

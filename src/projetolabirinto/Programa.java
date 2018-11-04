@@ -9,7 +9,8 @@ public class Programa {
 
     public static void main(String[] args) throws IOException, Exception {
         // TODO code application logic here
-        
+       //try
+       //{ 
         Labirinto labirinto = new Labirinto();
         //labirinto.procuraAdjacentes();
         Pilha<Coordenada> caminho = new Pilha<Coordenada> ();
@@ -35,8 +36,22 @@ public class Programa {
             }
         }
         
+        BufferedReader entrada = new BufferedReader (new FileReader (file));
+        while (entrada.ready())
+        {
+            String linha = entrada.readLine();
+            
+            System.out.println(linha);
+        }
+        
+        
         labirinto.montaLabirinto(file);
         labirinto.procuraEntradaESaida();
-        labirinto.procuraAdjacentes();
+        labirinto.preencheCaminho();
+       //}
+      // catch (Exception e)
+      // {
+      //     System.out.print(e.getMessage());
+      // }
     }
 }
