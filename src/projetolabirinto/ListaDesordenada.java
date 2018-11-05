@@ -94,7 +94,15 @@ public class ListaDesordenada<X> {
             return;
         }
         
-        this.ulti = new No(i, null);
+        if (this.prim.getProx() == null)
+        {
+            this.ulti = new No(i, null);
+            this.prim.setProx(this.ulti);            
+            return;
+        }
+      
+        this.ulti.setProx(new No (i, null));
+        this.ulti = this.ulti.getProx();
     }
     
     //Para a fila

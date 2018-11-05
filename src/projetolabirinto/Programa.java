@@ -40,12 +40,6 @@ public class Programa {
         labirinto.procuraEntradaESaida();
         labirinto.preencheCaminho();
         
-        BufferedReader entrada = new BufferedReader (new FileReader (file));
-        while (entrada.ready())
-        {
-            String linha = entrada.readLine();
-            
-            System.out.println(linha);
-        }
+        
     }
 }

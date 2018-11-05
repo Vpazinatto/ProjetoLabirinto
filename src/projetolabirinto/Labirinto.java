@@ -120,10 +120,16 @@ public class Labirinto {
                 atual = caminho.getUmItem();
                 caminho.jogueUmItemFora();
 
-                this.labirinto[atual.getLinha()][atual.getColuna()] = ' '; 
+                this.procuraAdjacentes();
+                
+                this.labirinto[atual.getLinha()][atual.getColuna()] = '-'; 
 
-                fila.guardeUmItem(possibilidades.getUmItem().getUmItem());
-                possibilidades.jogueUmItemFora();
+                if (!possibilidades.getUmItem().vazia())
+                    fila.guardeUmItem(possibilidades.getUmItem().getUmItem());
+                
+                    possibilidades.jogueUmItemFora();
+                
+                
             }     
 
             atual = fila.getUmItem();
@@ -135,7 +141,22 @@ public class Labirinto {
                 break;
 
             caminho.guardeUmItem(atual);
-            possibilidades.guardeUmItem(fila);  
-        }         
+            possibilidades.guardeUmItem(fila);
+            
+            if (labirinto[atual.getLinha()][atual.getColuna()] == 'S')
+              break;  
+        }
+        
+        for(int l=0; l < this.linhasQtd; l++)
+        {
+            for (int c=0; c < this.colunasQtd; c++)
+            {
+                System.out.print(this.labirinto[l][c]);
+            }
+            System.out.println("");
+        }
+        
+        
+        
     }
 }
