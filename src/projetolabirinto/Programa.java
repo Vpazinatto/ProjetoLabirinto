@@ -25,8 +25,7 @@ public class Programa {
             System.out.println(arquivos[i].getName());
         }
         
-        System.out.println("");
-        
+        System.out.println();
         System.out.print("Escolha um dos labirintos acima: ");
         String file = s.nextLine();
         
@@ -35,7 +34,8 @@ public class Programa {
                 file = arquivos[i].getAbsolutePath();
             }
         }
-     
+        
+        System.out.println();
         labirinto.montaLabirinto(file);
         labirinto.procuraEntradaESaida();
         labirinto.preencheCaminho();
