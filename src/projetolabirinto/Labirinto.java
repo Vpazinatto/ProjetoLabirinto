@@ -56,8 +56,9 @@ public class Labirinto {
             for (int i=0; i<linha.length(); i++) 
             {
                 this.labirinto[l][i] = linha.charAt(i);
-                if (linha.charAt(i) == 'E')
-                    atual = new Coordenada (l,i);
+                if (linha.charAt(i) == 'E') {
+                    atual = new Coordenada (l,i);    
+                }
             }
             
             l++;
