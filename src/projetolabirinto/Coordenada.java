@@ -29,6 +29,4 @@ public class Coordenada {
     public String toString() {
         return "(" + this.linha + "," + this.coluna + ")";
     }
-    
-    
 }

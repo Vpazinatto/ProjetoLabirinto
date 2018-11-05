@@ -105,23 +105,6 @@ public class Labirinto {
         if (this.linhaAtual-1 >= 0)
             if (this.labirinto[atual.getLinha()-1][atual.getColuna()] == ' ' || this.labirinto[atual.getLinha()-1][atual.getColuna()] == 'S')
                 fila.guardeUmItem(new Coordenada(atual.getLinha()-1, atual.getColuna())); 
-        
-        
-        /*
-        if (this.labirinto[this.linhaAtual][this.colunaAtual+1] == ' ')
-            fila.guardeUmItem(new Coordenada(this.linhaAtual, this.colunaAtual+1));  
-        
-        if (this.labirinto[this.linhaAtual][this.colunaAtual-1] == ' ')
-            fila.guardeUmItem(new Coordenada(this.linhaAtual, this.colunaAtual-1));
-        
-        if (this.labirinto[this.linhaAtual+1][this.colunaAtual] == ' ')
-            fila.guardeUmItem(new Coordenada(this.linhaAtual+1, this.colunaAtual));
-        
-        if (this.labirinto[this.linhaAtual-1][this.colunaAtual] == ' ')
-            fila.guardeUmItem(new Coordenada(this.linhaAtual-1, this.colunaAtual));
-        
-        System.out.println(fila);
-        */
     }
     
     public void preencheCaminho () throws Exception
@@ -129,45 +112,30 @@ public class Labirinto {
         //Modo progressivo
         for(;;)
         {
-         this.procuraAdjacentes();
-         
-         while (fila.vazia())
-         {
-           //Modo Regressivo  
-             
-           atual = caminho.getUmItem();
-           caminho.jogueUmItemFora();
-           
-           this.labirinto[atual.getLinha()][atual.getColuna()] = ' '; 
-           
-           fila.guardeUmItem(possibilidades.getUmItem().getUmItem());
-           possibilidades.jogueUmItemFora();
-         }     
-        
-         atual = fila.getUmItem();
-         fila.jogueUmItemFora();
-        
-         if (labirinto[atual.getLinha()][atual.getColuna()] == ' ')
-          this.setCaminho(atual);
-         else
-          break;
+            this.procuraAdjacentes();
 
-         caminho.guardeUmItem(atual);
-         possibilidades.guardeUmItem(fila);
-         
-         
+            while (fila.vazia())
+            {
+                //Modo Regressivo
+                atual = caminho.getUmItem();
+                caminho.jogueUmItemFora();
+
+                this.labirinto[atual.getLinha()][atual.getColuna()] = ' '; 
+
+                fila.guardeUmItem(possibilidades.getUmItem().getUmItem());
+                possibilidades.jogueUmItemFora();
+            }     
+
+            atual = fila.getUmItem();
+            fila.jogueUmItemFora();
+
+            if (labirinto[atual.getLinha()][atual.getColuna()] == ' ')
+                this.setCaminho(atual);
+            else
+                break;
+
+            caminho.guardeUmItem(atual);
+            possibilidades.guardeUmItem(fila);  
         }         
-        
-        
-        
-        /*
-        System.out.println(labirinto[1][0]);
-        System.out.println(labirinto[1][1]);
-        System.out.println(labirinto[1][2]);
-        System.out.println(labirinto[1][3]);
-        */
-
     }
-   
-    
 }

@@ -35,6 +35,10 @@ public class Programa {
                 file = arquivos[i].getAbsolutePath();
             }
         }
+     
+        labirinto.montaLabirinto(file);
+        labirinto.procuraEntradaESaida();
+        labirinto.preencheCaminho();
         
         BufferedReader entrada = new BufferedReader (new FileReader (file));
         while (entrada.ready())
@@ -43,15 +47,5 @@ public class Programa {
             
             System.out.println(linha);
         }
-        
-        
-        labirinto.montaLabirinto(file);
-        labirinto.procuraEntradaESaida();
-        labirinto.preencheCaminho();
-       //}
-      // catch (Exception e)
-      // {
-      //     System.out.print(e.getMessage());
-      // }
     }
 }
