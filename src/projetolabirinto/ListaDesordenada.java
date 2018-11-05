@@ -35,7 +35,7 @@ public class ListaDesordenada<X> {
             this.prox = p;
         }
     }
-    //Var
+    
     private No prim;
     private No ulti;
     
@@ -71,9 +71,11 @@ public class ListaDesordenada<X> {
             return false;
     }
     
+    //Para a pilha
     public void insiraNoTopo(X i) throws Exception 
     {
-        if (this.prim == null) {
+        if (this.prim == null) 
+        {
             this.prim = new No(i, null);
             this.ulti = this.prim;
             return;
@@ -83,6 +85,7 @@ public class ListaDesordenada<X> {
         this.ulti = novo;
     }
     
+    //Para a fila
     public void insiraNoFinal(X i) throws Exception 
     {
         if (this.prim == null) {
@@ -94,16 +97,17 @@ public class ListaDesordenada<X> {
         this.ulti = new No(i, null);
     }
     
-                
+    //Para a fila
     public void removePrimeiro()  throws Exception
     {
         if (this.prim == null)    
             throw new Exception ("Lista vazia !");
         
         this.prim = this.prim.getProx();
+
     }
     
-    //removeTopo
+    //Para a pilha
     public void removeUltimo() throws Exception
     {
         if (this.ulti == null)
@@ -111,6 +115,7 @@ public class ListaDesordenada<X> {
         
         this.ulti = this.ulti.getProx();
     }
+    
     
     public X getPrimeiro() throws Exception
     {

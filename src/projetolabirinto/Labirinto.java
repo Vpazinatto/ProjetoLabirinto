@@ -160,12 +160,12 @@ public class Labirinto {
         
         
         
-        
+        /*
         System.out.println(labirinto[1][0]);
         System.out.println(labirinto[1][1]);
         System.out.println(labirinto[1][2]);
         System.out.println(labirinto[1][3]);
-        
+        */
 
     }
    

@@ -32,21 +32,6 @@ public class Pilha<X> {
 
     public void guardeUmItem (X x) throws Exception
     {
-        this.insiraNoInicio (x);
-    }
-
-    public X getUmItem () throws Exception
-    {
-        return this.getPrimeiro();
-    }
-
-    public void jogueUmItemFora () throws Exception
-    {
-        this.removePrimeiro();
-    }
-    
-    private void insiraNoInicio (X x) throws Exception
-    {
         X info = null;
         
         if (x instanceof Cloneable)
@@ -56,13 +41,13 @@ public class Pilha<X> {
         
         this.lista.insiraNoTopo(info);
     }
-    
-    private X getPrimeiro () throws Exception
+
+    public X getUmItem () throws Exception
     {
         if (lista.vazia())
             throw new Exception ("Lista vazia !");
         X ret = null;
-        X primeiro = this.lista.getPrimeiro();
+        X primeiro = this.lista.getUltimo();
         
         if (primeiro instanceof Cloneable)
             ret = this.meuCloneDeX(primeiro);
@@ -72,9 +57,9 @@ public class Pilha<X> {
         return ret;
     }
     
-    private void removePrimeiro () throws Exception
+    public void jogueUmItemFora () throws Exception
     {
-        this.lista.removePrimeiro();
+        this.lista.removeUltimo();
     }
     
     @Override

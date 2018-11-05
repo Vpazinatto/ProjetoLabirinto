@@ -34,26 +34,6 @@ public class Fila <X> implements Cloneable
         if (x == null)
             throw new Exception ("Item inválido!");
         
-        this.insiraNoFinal (x);
-    }
-
-    public X getUmItem () throws Exception
-    {
-        if (this.getPrimeiro() == null)
-            throw new Exception ("Lista vazia!");
-        
-        return this.getPrimeiro();
-    }
-
-    public void jogueUmItemFora () throws Exception
-    {
-        if (this.getPrimeiro() == null)
-            throw new Exception ("Lista vazia!");
-        
-        this.removePrimeiro ();
-    }
-    
-    private void insiraNoFinal(X x) throws Exception {
         X info = null;
         
         if (x instanceof Cloneable)
@@ -64,7 +44,7 @@ public class Fila <X> implements Cloneable
         this.lista.insiraNoFinal(info);
     }
 
-    private X getPrimeiro() throws Exception
+    public X getUmItem () throws Exception
     {
         if (this.lista.vazia())
             throw new Exception ("Lista vazia!");
@@ -80,10 +60,13 @@ public class Fila <X> implements Cloneable
         return ret;
     }
 
-    private void removePrimeiro() throws Exception  {
-        this.lista.removePrimeiro();
+    public void jogueUmItemFora () throws Exception
+    {
+        if (this.getUmItem()== null)
+            throw new Exception ("Lista vazia!");
+        
+       this.lista.removePrimeiro();
     }
-
 
     public boolean vazia ()
     {
