@@ -39,7 +39,5 @@ public class Programa {
         labirinto.montaLabirinto(file);
         labirinto.procuraEntradaESaida();
         labirinto.preencheCaminho();
-        
-        
     }
 }

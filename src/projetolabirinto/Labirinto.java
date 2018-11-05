@@ -13,7 +13,6 @@ import java.util.Scanner;
 public class Labirinto {
     
     private char[][] labirinto = new char[0][0];
-    private int linhaAtual, colunaAtual;
     private int linhasQtd = 0, colunasQtd = 0;
     private Fila<Coordenada> fila;
     private Pilha<Coordenada> caminho;
@@ -94,15 +93,15 @@ public class Labirinto {
             if (this.labirinto[atual.getLinha()][atual.getColuna()+1] == ' '  || this.labirinto[atual.getLinha()][atual.getColuna()+1] == 'S')
                fila.guardeUmItem(new Coordenada(atual.getLinha(), atual.getColuna()+1));
         
-        if (this.colunaAtual-1 >= 0)
+        if (atual.getColuna()-1 >= 0)
             if (this.labirinto[atual.getLinha()][atual.getColuna()-1] == ' '  || this.labirinto[atual.getLinha()][atual.getColuna()-1] == 'S')
                 fila.guardeUmItem(new Coordenada(atual.getLinha(), atual.getColuna()-1));
         
-        if (this.linhaAtual+1 <= this.linhasQtd)
+        if (atual.getLinha()+1 <= this.linhasQtd)
             if (this.labirinto[atual.getLinha()+1][atual.getColuna()] == ' '  || this.labirinto[atual.getLinha()+1][atual.getColuna()] == 'S')
                 fila.guardeUmItem(new Coordenada(atual.getLinha()+1, atual.getColuna()));       
         
-        if (this.linhaAtual-1 >= 0)
+        if (atual.getLinha()-1 >= 0)
             if (this.labirinto[atual.getLinha()-1][atual.getColuna()] == ' ' || this.labirinto[atual.getLinha()-1][atual.getColuna()] == 'S')
                 fila.guardeUmItem(new Coordenada(atual.getLinha()-1, atual.getColuna())); 
     }
@@ -127,9 +126,7 @@ public class Labirinto {
                 if (!possibilidades.getUmItem().vazia())
                     fila.guardeUmItem(possibilidades.getUmItem().getUmItem());
                 
-                    possibilidades.jogueUmItemFora();
-                
-                
+                possibilidades.jogueUmItemFora();
             }     
 
             atual = fila.getUmItem();
@@ -137,26 +134,31 @@ public class Labirinto {
 
             if (labirinto[atual.getLinha()][atual.getColuna()] == ' ')
                 this.setCaminho(atual);
-            else
-                break;
 
             caminho.guardeUmItem(atual);
             possibilidades.guardeUmItem(fila);
             
-            if (labirinto[atual.getLinha()][atual.getColuna()] == 'S')
-              break;  
+            if (labirinto[atual.getLinha()][atual.getColuna()] == 'S') 
+            {
+              this.finalizaJogo();
+              break;
+            }
         }
-        
+    }
+    
+    public void finalizaJogo()
+    {
         for(int l=0; l < this.linhasQtd; l++)
         {
             for (int c=0; c < this.colunasQtd; c++)
             {
                 System.out.print(this.labirinto[l][c]);
             }
+            
             System.out.println("");
-        }
+        } 
         
-        
-        
+        System.out.println();
+        System.out.println("Saída do labirinto encontrada!");
     }
 }
