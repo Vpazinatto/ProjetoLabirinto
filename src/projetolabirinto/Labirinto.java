@@ -57,7 +57,18 @@ public class Labirinto {
             {
                 this.labirinto[l][i] = linha.charAt(i);
                 if (linha.charAt(i) == 'E') {
-                    atual = new Coordenada (l,i);    
+                    atual = new Coordenada (l,i);
+                    if (atual.getColuna()+1 > this.colunasQtd)
+                        throw new Exception("Entrada do labirinto inválida!");
+                    
+                    if (atual.getColuna()-1 < this.colunasQtd)
+                        throw new Exception("Entrada do labirinto inválida!");
+                    
+                    if (atual.getLinha()-1 < this.linhasQtd)
+                        throw new Exception("Entrada do labirinto inválida!");
+                    
+                    if (atual.getLinha()+1 < this.linhasQtd)
+                        throw new Exception("Entrada do labirinto inválida!");    
                 }
             }
             
