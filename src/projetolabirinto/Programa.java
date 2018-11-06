@@ -34,7 +34,7 @@ public class Programa {
                 file = arquivos[i].getAbsolutePath();
             }
         }
-        
+            
         System.out.println();
         labirinto.montaLabirinto(file);
         labirinto.procuraEntradaESaida();
