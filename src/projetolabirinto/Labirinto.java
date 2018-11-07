@@ -106,7 +106,7 @@ public class Labirinto {
             for (int coluna=0; coluna<this.colunasQtd; coluna++ ) 
             {
                 if (labirinto[linha][coluna] == 'S')
-                     return true;
+                    return true;
             }
         }
         throw new Exception ("Labirinto inválido,não existe Saída !");
