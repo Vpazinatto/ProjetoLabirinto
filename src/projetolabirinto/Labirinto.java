@@ -60,7 +60,6 @@ public class Labirinto {
                     atual = new Coordenada (l,i);
                 }
             }
-            
             l++;
         }
         entrada.close();
@@ -90,7 +89,7 @@ public class Labirinto {
     {
         fila = new Fila<Coordenada> ();
         
-        if (atual.getColuna()+1 <= this.colunasQtd)
+        if (atual.getColuna()+1 < this.colunasQtd)
             if (this.labirinto[atual.getLinha()][atual.getColuna()+1] == ' '  || this.labirinto[atual.getLinha()][atual.getColuna()+1] == 'S')
                fila.guardeUmItem(new Coordenada(atual.getLinha(), atual.getColuna()+1));
         
@@ -98,7 +97,7 @@ public class Labirinto {
             if (this.labirinto[atual.getLinha()][atual.getColuna()-1] == ' '  || this.labirinto[atual.getLinha()][atual.getColuna()-1] == 'S')
                 fila.guardeUmItem(new Coordenada(atual.getLinha(), atual.getColuna()-1));
         
-        if (atual.getLinha()+1 <= this.linhasQtd)
+        if (atual.getLinha()+1 < this.linhasQtd)
             if (this.labirinto[atual.getLinha()+1][atual.getColuna()] == ' '  || this.labirinto[atual.getLinha()+1][atual.getColuna()] == 'S')
                 fila.guardeUmItem(new Coordenada(atual.getLinha()+1, atual.getColuna()));       
         
