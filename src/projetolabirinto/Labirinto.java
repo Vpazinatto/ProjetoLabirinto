@@ -58,10 +58,12 @@ public class Labirinto {
                 this.labirinto[l][i] = linha.charAt(i);
                 
                 if (linha.charAt(i) == 'E')
+                {
                     atual = new Coordenada (l,i);
                 
                 if (!this.validaEntradaESaida(atual))
                     throw new Exception ("Labirinto inválido ! A entrada não está numa posição válida !");
+                }
             }
             l++;
         }
