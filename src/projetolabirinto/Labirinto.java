@@ -56,13 +56,43 @@ public class Labirinto {
             for (int i=0; i<linha.length(); i++) 
             {
                 this.labirinto[l][i] = linha.charAt(i);
-                if (linha.charAt(i) == 'E') {
+                
+                if (linha.charAt(i) == 'E')
                     atual = new Coordenada (l,i);
-                }
+                
+                if (!this.validaEntradaESaida(atual))
+                    throw new Exception ("Labirinto inválido ! A entrada não está numa posição válida !");
             }
             l++;
         }
         entrada.close();
+    }
+    
+    public boolean validaEntradaESaida(Coordenada at) throws Exception
+    {
+        boolean ret = true;
+        
+        //Canto superior esquerdo
+        if (at.getColuna() == 0 && at.getLinha() == 0)
+            ret = false;
+                    
+        if (at.getColuna() > 0 && at.getColuna() < this.colunasQtd)
+            if (at.getLinha() > 0 && at.getLinha() < this.colunasQtd)
+                ret = false;
+                    
+        //Canto inferior esquerdo
+        if (at.getColuna() == 0 && at.getLinha() == this.linhasQtd)
+            ret = false;
+           
+        //Canto inferior direito
+        if (at.getColuna() == this.colunasQtd && at.getLinha() == this.linhasQtd)
+            ret = false;
+                
+        //Canto superior esquerdo
+        if (at.getLinha() == 0 && at.getColuna() == this.colunasQtd)
+            ret = false;
+        
+        return ret;
     }
     
     public boolean procuraEntradaESaida() throws Exception 
