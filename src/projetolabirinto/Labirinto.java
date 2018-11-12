@@ -25,6 +25,14 @@ public class Labirinto {
         return this.labirinto;
     }
     
+    /**
+     * Construtor, responsavel por instaciar o caminho que é uma Pilha e as possibilidades que é uma Pilha de Fila ambas do tipo coordenada
+     * 
+     * @author Vinicius Pazinatto
+     * @author  Daniel Carvalho de Moura 
+     * 
+     * @throws Exception 
+     */
     public Labirinto() throws Exception
     {
       caminho = new Pilha<Coordenada> ();
