@@ -8,7 +8,8 @@ import java.util.logging.Logger;
 public class Programa {
 
     public static void main(String[] args) throws IOException, Exception {
-
+        try
+        {
         Labirinto labirinto = new Labirinto();
         String nome = "";
         Pilha<Coordenada> caminho = new Pilha<Coordenada> ();
@@ -35,11 +36,15 @@ public class Programa {
         }
             
         System.out.println();
+        
         labirinto.montaLabirinto(file, nome);
         labirinto.procuraEntradaESaida();
         labirinto.preencheCaminho();
         labirinto.montaResolvido();
-        System.out.println("Saída encontrada, o labirinto resolvido está na pasta!");
         
+        System.out.println("Saída encontrada, o labirinto resolvido está na pasta!");
+        }
+        catch (Exception e)
+        {}
     }
 }

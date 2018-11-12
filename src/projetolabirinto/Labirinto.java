@@ -154,7 +154,7 @@ public class Labirinto {
     }
     
     /**
-     * Percorre o labirinto e valída se possui saida
+     * Verifica se foi encontrada Entrada, se sim percorre o labirinto e valída se possui saida, se não tiver saída ou entrada, lança exceção
      *
      * @return verdadeiro se encontrou a saída falso se não
      * 

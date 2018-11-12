@@ -12,11 +12,10 @@ public class Pilha<X> {
         
         try
         {
-          //ret = (X)x.clone();
             Class<?> classe = x.getClass();
-            Class<?>[] tipoParametroFormal = null; // null pq clone tem 0 parametros
+            Class<?>[] tipoParametroFormal = null;
             Method metodo = classe.getMethod ("clone", tipoParametroFormal);
-            Object[] parametroReal = null; // null pq clone tem 0 parametros
+            Object[] parametroReal = null;
             ret = (X)metodo.invoke (x, parametroReal);
         }
         catch (Exception erro)
