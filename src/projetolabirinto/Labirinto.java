@@ -100,8 +100,8 @@ public class Labirinto {
         return ret;
     }
     
-    public boolean procuraEntradaESaida() throws Exception 
-    {   
+    public boolean procuraEntradaESaida() throws Exception
+    {
         if (this.atual == null)
           throw new Exception ("Labirinto inválido,não existe Entrada !");
         
