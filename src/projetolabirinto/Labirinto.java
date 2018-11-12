@@ -18,6 +18,7 @@ public class Labirinto {
     private Pilha<Coordenada> caminho;
     private Pilha<Fila<Coordenada>> possibilidades;
     private Coordenada atual;
+    private String nome;
 
     public char[][] getLabirinto()
     {
@@ -30,8 +31,10 @@ public class Labirinto {
       possibilidades = new Pilha<Fila<Coordenada>> ();
     }
     
-    public void montaLabirinto(String labirinto) throws Exception
+    public void montaLabirinto(String labirinto, String nome) throws Exception
     {
+        this.nome = nome;
+        
         BufferedReader entrada = new BufferedReader (new FileReader (labirinto));
         
         while (entrada.ready())
@@ -70,29 +73,29 @@ public class Labirinto {
         entrada.close();
     }
     
+    public void montaResolvido() throws Exception {
+        PrintWriter saida =
+            new PrintWriter (
+            new FileWriter (
+            "Resolvido_" + this.nome));
+        
+        for (int l = 0; l < this.linhasQtd; l++) {
+            for (int c = 0; c < this.colunasQtd; c++) {
+                saida.print(this.labirinto[l][c]);
+            }
+            saida.println();
+        }
+        
+        saida.close();
+    }
+    
     public boolean validaEntradaESaida(Coordenada at) throws Exception
     {
         boolean ret = true;
-        
-        //Canto superior esquerdo
-        //if (at.getColuna() == 0 && at.getLinha() == 0)
-        //    ret = false;
-                    
+
         if (at.getColuna() > 0 && at.getColuna() < this.colunasQtd)
             if (at.getLinha() > 0 && at.getLinha() < this.colunasQtd)
                 ret = false;
-                    
-        //Canto inferior esquerdo
-        //if (at.getColuna() == 0 && at.getLinha() == this.linhasQtd)
-        //    ret = false;
-           
-        //Canto inferior direito
-        //if (at.getColuna() == this.colunasQtd && at.getLinha() == this.linhasQtd)
-        //    ret = false;
-                
-        //Canto superior esquerdo
-        //if (at.getLinha() == 0 && at.getColuna() == this.colunasQtd)
-        //    ret = false;
         
         return ret;
     }
@@ -171,26 +174,7 @@ public class Labirinto {
             possibilidades.guardeUmItem(fila);
             
             if (labirinto[atual.getLinha()][atual.getColuna()] == 'S') 
-            {
-              this.finalizaJogo();
-              break;
-            }
+                return;
         }
-    }
-    
-    public void finalizaJogo()
-    {
-        for(int l=0; l < this.linhasQtd; l++)
-        {
-            for (int c=0; c < this.colunasQtd; c++)
-            {
-                System.out.print(this.labirinto[l][c]);
-            }
-            
-            System.out.println("");
-        } 
-        
-        System.out.println();
-        System.out.println("Saída do labirinto encontrada!");
     }
 }

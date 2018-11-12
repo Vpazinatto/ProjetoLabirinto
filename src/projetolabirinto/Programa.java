@@ -12,6 +12,7 @@ public class Programa {
        //try
        //{ 
         Labirinto labirinto = new Labirinto();
+        String nome = "";
         //labirinto.procuraAdjacentes();
         Pilha<Coordenada> caminho = new Pilha<Coordenada> ();
         Pilha<Fila<Coordenada>> possibilidades = new Pilha<Fila<Coordenada>> ();
@@ -32,12 +33,16 @@ public class Programa {
         for(int i = 0; i < arquivos.length; i++){
             if (arquivos[i].getName().equals(file)) {
                 file = arquivos[i].getAbsolutePath();
+                nome = arquivos[i].getName();
             }
         }
             
         System.out.println();
-        labirinto.montaLabirinto(file);
+        labirinto.montaLabirinto(file, nome);
         labirinto.procuraEntradaESaida();
         labirinto.preencheCaminho();
+        labirinto.montaResolvido();
+        System.out.println("Saída encontrada, o labirinto resolvido está na pasta!");
+        
     }
 }
