@@ -8,12 +8,9 @@ import java.util.logging.Logger;
 public class Programa {
 
     public static void main(String[] args) throws IOException, Exception {
-        // TODO code application logic here
-       //try
-       //{ 
+
         Labirinto labirinto = new Labirinto();
         String nome = "";
-        //labirinto.procuraAdjacentes();
         Pilha<Coordenada> caminho = new Pilha<Coordenada> ();
         Pilha<Fila<Coordenada>> possibilidades = new Pilha<Fila<Coordenada>> ();
         

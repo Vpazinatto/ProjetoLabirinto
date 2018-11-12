@@ -31,6 +31,27 @@ public class Labirinto {
       possibilidades = new Pilha<Fila<Coordenada>> ();
     }
     
+    /**
+     * Coloca um * no labirinto na coordenada passado por paramentro
+     * 
+     * @param pos Coordenada do espaço em branco que futuramente será preenchido.
+     * 
+     * @author Vinicius Pazinatto
+     * @author  Daniel Carvalho de Moura 
+     * 
+     */    
+    public void setCaminho(Coordenada pos) 
+    {
+        this.labirinto[pos.getLinha()][pos.getColuna()] = '*';
+    }
+    
+    /**
+     * Recebi uma string passada pelo Programa e monta uma matriz que será o labirinto 
+     * 
+     * @param labirinto
+     * @param nome
+     * @throws Exception 
+     */
     public void montaLabirinto(String labirinto, String nome) throws Exception
     {
         this.nome = nome;
@@ -73,6 +94,14 @@ public class Labirinto {
         entrada.close();
     }
     
+    /**
+     * Monta o labirinto resolvido em um arquivo .txt e o disponibiliza na main
+     * 
+     *@author  Vinicius Pazinatto
+     *@author  Daniel Carvalho de Moura 
+     * 
+     * @throws Exception 
+     */
     public void montaResolvido() throws Exception {
         PrintWriter saida =
             new PrintWriter (
@@ -89,6 +118,18 @@ public class Labirinto {
         saida.close();
     }
     
+    /**
+     * Valida se a Entra e saída do labirinto está nos cantos do mesmo.
+     * 
+     * @param at Coordenada atual da entrada ou saída
+     *  
+     * @return verdadeiro a entrada ou saída está na borda, falso se não.
+     * 
+     * @author  Vinicius Pazinatto
+     * @author  Daniel Carvalho de Moura
+     * 
+     * @throws Exception 
+     */
     public boolean validaEntradaESaida(Coordenada at) throws Exception
     {
         boolean ret = true;
@@ -100,6 +141,16 @@ public class Labirinto {
         return ret;
     }
     
+    /**
+     * Percorre o labirinto e valída se possui saida
+     *
+     * @return verdadeiro se encontrou a saída falso se não
+     * 
+     * @author  Vinicius Pazinatto
+     * @author  Daniel Carvalho de Moura
+     * 
+     * @throws Exception 
+     */
     public boolean procuraEntradaESaida() throws Exception
     {
         if (this.atual == null)
@@ -115,11 +166,14 @@ public class Labirinto {
         throw new Exception ("Labirinto inválido,não existe Saída !");
     }
     
-    public void setCaminho(Coordenada pos) 
-    {
-        this.labirinto[pos.getLinha()][pos.getColuna()] = '*';
-    }
-    
+    /**
+     * Encontra espaços em branco no labirinto e os armazena
+     * 
+     * @author  Vinicius Pazinatto
+     * @author  Daniel Carvalho de Moura
+     * 
+     * @throws Exception 
+     */
     public void procuraAdjacentes() throws Exception 
     {
         fila = new Fila<Coordenada> ();
@@ -141,6 +195,13 @@ public class Labirinto {
                 fila.guardeUmItem(new Coordenada(atual.getLinha()-1, atual.getColuna())); 
     }
     
+    /**
+     * Percorre preenchendo os espaços em branco guardados pela fila
+     * 
+     * @author Vinicius Pazinatto
+     * @author  Daniel Carvalho de Moura
+     * @throws Exception 
+     */
     public void preencheCaminho () throws Exception
     {
         //Modo progressivo
