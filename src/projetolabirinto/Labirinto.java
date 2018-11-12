@@ -46,17 +46,21 @@ public class Labirinto {
     }
     
     /**
-     * Recebi uma string passada pelo Programa e monta uma matriz que será o labirinto 
+     * Recebe uma string passada pelo Programa e monta uma matriz que será o labirinto 
      * 
-     * @param labirinto
-     * @param nome
+     * @param localLabirinto Nome do local do labirinto na pasta do arquivo  
+     * @param nome Nome passado pelo usuário para nomear o labirinto
+     * 
+     * @author  Vinicius Pazinatto
+     * @author  Daniel Carvalho de Moura 
+     * 
      * @throws Exception 
      */
-    public void montaLabirinto(String labirinto, String nome) throws Exception
+    public void montaLabirinto(String localLabirinto, String nome) throws Exception
     {
         this.nome = nome;
         
-        BufferedReader entrada = new BufferedReader (new FileReader (labirinto));
+        BufferedReader entrada = new BufferedReader (new FileReader (localLabirinto));
         
         while (entrada.ready())
         {
@@ -70,7 +74,7 @@ public class Labirinto {
 
         this.labirinto = new char[this.linhasQtd][this.colunasQtd];  
         
-        entrada = new BufferedReader (new FileReader (labirinto));
+        entrada = new BufferedReader (new FileReader (localLabirinto));
         int l = 0;
         
         while (entrada.ready())
