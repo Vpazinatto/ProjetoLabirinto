@@ -58,11 +58,11 @@ public class Coordenada {
      * Construtor, Deterima a coordenada
      * 
      * @author Vinicius Pazinatto
-     * @author  Daniel Carvalho de Moura 
+     * @author  Daniel Carvalho de Moura
      * 
      * @param l Linha da coordeanda
      * @param c Coluna da coordenada
-     * @throws Exception 
+     * @throws Exception
      */
     public Coordenada(int l, int c) throws Exception {
         this.linha = l;
