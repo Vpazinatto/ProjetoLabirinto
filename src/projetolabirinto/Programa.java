@@ -47,10 +47,23 @@ public class Programa {
             
         System.out.println();
         
-        labirinto.montaLabirinto(file, nome);
+        labirinto.montaLabirinto(file);
         labirinto.procuraEntradaESaida();
         labirinto.preencheCaminho();
-        labirinto.montaResolvido();
+        
+        PrintWriter saida =
+            new PrintWriter (
+            new FileWriter (
+            "Resolvido_" + nome));
+        
+        for (int l = 0; l < labirinto.getLinhasQtd(); l++) {
+            for (int c = 0; c < labirinto.getColunasQtd(); c++) {
+                saida.print(labirinto.getLabirinto()[l][c]);
+            }
+            saida.println();
+        }
+        
+        saida.close();
         
         System.out.println("Saída encontrada, o labirinto resolvido está na pasta!");
         }

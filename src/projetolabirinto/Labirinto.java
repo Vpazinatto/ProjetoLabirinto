@@ -19,12 +19,11 @@ import java.util.Scanner;
 public class Labirinto {
     
     private char[][] labirinto = new char[0][0];
-    private int linhasQtd = 0, colunasQtd = 0;
+    private int linhasQtd, colunasQtd = 0;
     private Fila<Coordenada> fila;
     private Pilha<Coordenada> caminho;
     private Pilha<Fila<Coordenada>> possibilidades;
     private Coordenada atual;
-    private String nome;
 
     /**
      * Getter responsável por retornar o labirinto completo.
@@ -34,6 +33,26 @@ public class Labirinto {
     public char[][] getLabirinto()
     {
         return this.labirinto;
+    }
+    
+    /**
+     * Getter responsável por retornar o número de linhas do labirinto.
+     *
+     * @return retorna o linhaQtd armazenado na classe.
+     */
+    public int getLinhasQtd()
+    {
+        return this.linhasQtd;
+    }
+    
+    /**
+     * Getter responsável por retornar o número de colunas do labirinto.
+     *
+     * @return retorna o colunasQtd armazenado na classe.
+     */
+    public int getColunasQtd()
+    {
+        return this.colunasQtd;
     }
     
     /**
@@ -75,10 +94,8 @@ public class Labirinto {
      * 
      * @throws Exception se a entrada estiver numa posição inválida
      */
-    public void montaLabirinto(String localLabirinto, String nome) throws Exception
+    public void montaLabirinto(String localLabirinto) throws Exception
     {
-        this.nome = nome;
-        
         BufferedReader entrada = new BufferedReader (new FileReader (localLabirinto));
         
         while (entrada.ready())
@@ -115,30 +132,6 @@ public class Labirinto {
             l++;
         }
         entrada.close();
-    }
-    
-    /**
-     * Monta o labirinto resolvido em um arquivo .txt e o disponibiliza na raiz do projeto
-     * 
-     *@author  Vinicius Pazinatto
-     *@author  Daniel Carvalho de Moura 
-     * 
-     *@throws Exception 
-     */
-    public void montaResolvido() throws Exception {
-        PrintWriter saida =
-            new PrintWriter (
-            new FileWriter (
-            "Resolvido_" + this.nome));
-        
-        for (int l = 0; l < this.linhasQtd; l++) {
-            for (int c = 0; c < this.colunasQtd; c++) {
-                saida.print(this.labirinto[l][c]);
-            }
-            saida.println();
-        }
-        
-        saida.close();
     }
     
     /**
