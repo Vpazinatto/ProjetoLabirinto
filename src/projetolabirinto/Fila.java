@@ -2,10 +2,26 @@ package projetolabirinto;
 
 import java.lang.reflect.*;
 
+/**
+ * Esta classe consiste em métodos para armazenar dados em uma lista, na forma de Fila.
+ *
+* @author Vinicius Pazinatto
+* @author Daniel Carvalho de Moura
+* 
+* @param <X> tipo dos dados que devem ser armazenados
+ */
 public class Fila <X> implements Cloneable
 {
     private ListaDesordenada<X> lista;
 
+    /**
+     * Método para clonar dados para armazenar ou retornar.
+     *
+     * @author Vinicius Pazinatto
+     * @author Daniel Carvalho de Moura
+     * 
+     * @param x dado para clonar
+     */
     private X meuCloneDeX (X x)
     {
         X ret=null;
@@ -24,11 +40,28 @@ public class Fila <X> implements Cloneable
         return ret;
     }
 
+    /**
+     * Construtor, instancia a Fila.
+     *
+     * @author Vinicius Pazinatto
+     * @author Daniel Carvalho de Moura
+     * 
+     * @throws Exception se houver algum erro ao instânciar a fila.
+     */
     public Fila () throws Exception
     {
         this.lista = new ListaDesordenada<X> ();
     }
 
+    /**
+     * GuardeUmItem, método para armazenar dados na lista dentro da fila.
+     * 
+     * @author Vinicius Pazinatto
+     * @author Daniel Carvalho de Moura
+     *
+     * @param x Dado que deve ser armazenado.
+     * @throws Exception se o parâmetro for nulo.
+     */
     public void guardeUmItem (X x) throws Exception
     {
         if (x == null)
@@ -44,6 +77,15 @@ public class Fila <X> implements Cloneable
         this.lista.insiraNoFinal(info);
     }
 
+    /**
+     * Getter responsável por retornar um item da fila
+     * 
+     * @author Vinicius Pazinatto
+     * @author Daniel Carvalho de Moura
+     * 
+     * @return retorna o primeiro item da fila.
+     * @throws Exception
+     */
     public X getUmItem () throws Exception
     {
         if (this.lista.vazia())
@@ -60,37 +102,86 @@ public class Fila <X> implements Cloneable
         return ret;
     }
 
+    /**
+     * JogueUmItemFora, método responsável por remover itens da fila.
+     * 
+     * @author Vinicius Pazinatto
+     * @author Daniel Carvalho de Moura
+     *
+     * @throws Exception se a fila estiver vazia.
+     */
     public void jogueUmItemFora () throws Exception
-    {
-        if (this.getUmItem()== null)
-            throw new Exception ("Lista vazia!");
-        
+    {        
        this.lista.removePrimeiro();
     }
 
+    /**
+     * Vazia, método que informa se a fila está vazia ou não.
+     * 
+     * @author Vinicius Pazinatto
+     * @author Daniel Carvalho de Moura
+     *
+     * @return retorna true se a fila estiver vazia, e false se não estiver vazia.
+     */
     public boolean vazia ()
     {
-        if (this.lista.vazia()) // fazer este método em lista
+        if (this.lista.vazia())
             return true;
         else
             return false;
     }
     
+    /**
+     * ToString, retorna uma lista de nós com suas respectivas informações armazenadas.
+     * 
+     * @author Vinicius Pazinatto
+     * @author Daniel Carvalho de Moura
+     *
+     * @return retorna uma string com todos os dados da lista da fila.
+     */
+    @Override
     public String toString ()
     {
         return this.lista.toString();
     }
 
+    /**
+     * Equals, compara a fila a outra classe para verificar se são iguais.
+     * 
+     * @author Vinicius Pazinatto
+     * @author Daniel Carvalho de Moura
+     *
+     * @return retorna true se as classes forem iguais e false se forem diferentes.
+     */
+    @Override
     public boolean equals (Object obj)
     {
         return this.lista.equals(obj);
     }
 
+    /**
+     * HashCode, retorna o HashCode da classe.
+     * 
+     * @author Vinicius Pazinatto
+     * @author Daniel Carvalho de Moura
+     *
+     * @return retorna um int, o hashcode da classe.
+     */
+    @Override
     public int hashCode ()
     {
         return this.lista.hashCode();
     }
 
+    /**
+     * Construtor de cópia, instância uma classe igual ao modelo fornecido.
+     * 
+     * @author Vinicius Pazinatto
+     * @author Daniel Carvalho de Moura
+     *
+     * @param modelo modelo utilizado para instanciar uma nova classe.
+     * @throws Exception se o modelo for nulo.
+     */
     public Fila (Fila<X> modelo) throws Exception
     {
         if (modelo==null)
@@ -99,6 +190,14 @@ public class Fila <X> implements Cloneable
         this.lista = modelo.lista;
     }
 
+    /**
+     * Clone, clona a classe.
+     * 
+     * @author Vinicius Pazinatto
+     * @author Daniel Carvalho de Moura
+     *
+     */
+    @Override
     public Object clone ()
     {
         Fila<X> ret=null;

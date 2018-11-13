@@ -10,6 +10,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
+/**
+ * Esta classe consiste em métodos para instanciar um labirinto, verificar se é válido, e resolvê-lo.
+ * 
+ * @author Vinicius Vinicius Pazinatto
+ * @author Daniel Carvalho de Moura
+ */
 public class Labirinto {
     
     private char[][] labirinto = new char[0][0];
@@ -20,6 +26,11 @@ public class Labirinto {
     private Coordenada atual;
     private String nome;
 
+    /**
+     * Getter responsável por retornar o labirinto completo.
+     *
+     * @return retorna o labirinto armazenado na classe.
+     */
     public char[][] getLabirinto()
     {
         return this.labirinto;
@@ -29,9 +40,9 @@ public class Labirinto {
      * Construtor, responsavel por instaciar o caminho que é uma Pilha e as possibilidades que é uma Pilha de Fila ambas do tipo coordenada
      * 
      * @author Vinicius Pazinatto
-     * @author  Daniel Carvalho de Moura 
+     * @author Daniel Carvalho de Moura 
      * 
-     * @throws Exception 
+     * @throws Exception se houver algum erro ao instânciar caminho, possibilidades ou o labirinto.
      */
     public Labirinto() throws Exception
     {
@@ -40,12 +51,12 @@ public class Labirinto {
     }
     
     /**
-     * Coloca um * no labirinto na coordenada passado por paramentro
+     * SetCaminho, coloca um * no labirinto na coordenada passado por paramentro
      * 
      * @param pos Coordenada do espaço em branco que futuramente será preenchido.
      * 
      * @author Vinicius Pazinatto
-     * @author  Daniel Carvalho de Moura 
+     * @author Daniel Carvalho de Moura 
      * 
      */    
     public void setCaminho(Coordenada pos) 
@@ -54,7 +65,7 @@ public class Labirinto {
     }
     
     /**
-     * Recebe uma string passada pelo Programa e monta uma matriz que será o labirinto 
+     * MontaLabirinto, recebe o caminho e o nome do labirinto, ambas Strings, e monta uma matriz que será o labirinto 
      * 
      * @param localLabirinto Nome do local do labirinto na pasta do arquivo  
      * @param nome Nome passado pelo usuário para nomear o labirinto
@@ -62,7 +73,7 @@ public class Labirinto {
      * @author  Vinicius Pazinatto
      * @author  Daniel Carvalho de Moura 
      * 
-     * @throws Exception 
+     * @throws Exception se a entrada estiver numa posição inválida
      */
     public void montaLabirinto(String localLabirinto, String nome) throws Exception
     {
@@ -107,12 +118,12 @@ public class Labirinto {
     }
     
     /**
-     * Monta o labirinto resolvido em um arquivo .txt e o disponibiliza na main
+     * Monta o labirinto resolvido em um arquivo .txt e o disponibiliza na raiz do projeto
      * 
      *@author  Vinicius Pazinatto
      *@author  Daniel Carvalho de Moura 
      * 
-     * @throws Exception 
+     *@throws Exception 
      */
     public void montaResolvido() throws Exception {
         PrintWriter saida =
@@ -131,18 +142,17 @@ public class Labirinto {
     }
     
     /**
-     * Valida se a Entra e saída do labirinto está nos cantos do mesmo.
+     * ValidaEntradaESaída, valida se a entrada e saída do labirinto está nos cantos do mesmo.
      * 
      * @param at Coordenada atual da entrada ou saída
      *  
-     * @return verdadeiro a entrada ou saída está na borda, falso se não.
+     * @return retorna true se a entrada ou saída está na borda, false se não.
      * 
      * @author  Vinicius Pazinatto
      * @author  Daniel Carvalho de Moura
-     * 
-     * @throws Exception 
+     *  
      */
-    public boolean validaEntradaESaida(Coordenada at) throws Exception
+    public boolean validaEntradaESaida(Coordenada at)
     {
         boolean ret = true;
 
@@ -154,14 +164,14 @@ public class Labirinto {
     }
     
     /**
-     * Verifica se foi encontrada Entrada, se sim percorre o labirinto e valída se possui saida, se não tiver saída ou entrada, lança exceção
+     * ProcuraEntradaESaida, verifica se foi encontrada Entrada, se sim percorre o labirinto e valída se possui saida.
      *
-     * @return verdadeiro se encontrou a saída falso se não
+     * @return true se encontrou a saída, false se não
      * 
      * @author  Vinicius Pazinatto
      * @author  Daniel Carvalho de Moura
      * 
-     * @throws Exception 
+     * @throws Exception se não tiver saída ou entrada, lança exceção
      */
     public boolean procuraEntradaESaida() throws Exception
     {
@@ -179,12 +189,12 @@ public class Labirinto {
     }
     
     /**
-     * Encontra espaços em branco no labirinto e os armazena
+     * ProcuraAdjacentes, busca as coordenadas adjacentes da coordenada atual, e verifica se são espaços vazios, a saída ou parede.Armazena na Fila se for espaço vazio ou a saída.
      * 
      * @author  Vinicius Pazinatto
      * @author  Daniel Carvalho de Moura
      * 
-     * @throws Exception 
+     * @throws Exception se houver erro ao instânciar a fila
      */
     public void procuraAdjacentes() throws Exception 
     {
@@ -208,11 +218,12 @@ public class Labirinto {
     }
     
     /**
-     * Percorre preenchendo os espaços em branco guardados pela fila
+     * PreencheCaminho, percorre o labirinto preenchendo os espaços em branco guardados pela fila, alternando entre modo progressivo e modo regressivo quando necessário.
      * 
      * @author Vinicius Pazinatto
      * @author  Daniel Carvalho de Moura
-     * @throws Exception 
+     * 
+     * @throws Exception se houver erros com os métodos de fila,pilha.
      */
     public void preencheCaminho () throws Exception
     {

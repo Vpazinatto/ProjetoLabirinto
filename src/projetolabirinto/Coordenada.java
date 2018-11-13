@@ -1,5 +1,12 @@
 package projetolabirinto;
 
+/**
+* Esta classe consiste em métodos para armazenar e recuperar coordenadas específicas dentro do labirinto.
+* 
+* 
+* @author Vinicius Pazinatto
+* @author Daniel Carvalho de Moura
+ */
 public class Coordenada {
     
     private int linha, coluna; 
@@ -8,9 +15,8 @@ public class Coordenada {
      * Setter responsável por setar a linha da coordeanda
      * 
      * @author Vinicius Pazinatto
-     * @author  Daniel Carvalho de Moura 
-     * 
-     * @param linhha Linha da coordeanda
+     * @author Daniel Carvalho de Moura
+     * @param linha
      * 
      */
     public void setLinha(int linha) {
@@ -21,7 +27,7 @@ public class Coordenada {
      * Setter responsável por setar a coluna da coordeanda
      * 
      * @author Vinicius Pazinatto
-     * @author  Daniel Carvalho de Moura 
+     * @author Daniel Carvalho de Moura 
      * 
      * @param coluna coluna da coordeanda
      * 
@@ -34,7 +40,7 @@ public class Coordenada {
      * Getter responsável por retornar a linha da coordeanda
      * 
      * @author Vinicius Pazinatto
-     * @author  Daniel Carvalho de Moura 
+     * @author Daniel Carvalho de Moura 
      * 
      * @return retorna a linha da coordeanda
      */
@@ -46,7 +52,7 @@ public class Coordenada {
      * Getter responsável por retornar a coluna da coordeanda
      * 
      * @author Vinicius Pazinatto
-     * @author  Daniel Carvalho de Moura 
+     * @author Daniel Carvalho de Moura 
      * 
      * @return retorna a coluna da coordeanda
      */
@@ -58,7 +64,7 @@ public class Coordenada {
      * Construtor, Deterima a coordenada
      * 
      * @author Vinicius Pazinatto
-     * @author  Daniel Carvalho de Moura
+     * @author Daniel Carvalho de Moura
      * 
      * @param l Linha da coordeanda
      * @param c Coluna da coordenada
@@ -74,9 +80,9 @@ public class Coordenada {
      * (1, 1)
      * 
      * @author Vinicius Pazinatto
-     * @author  Daniel Carvalho de Moura 
+     * @author Daniel Carvalho de Moura 
      * 
-     * @return 
+     * @return retorna uma string com a linha e coluna da coordenada.
      */
     @Override
     public String toString() {

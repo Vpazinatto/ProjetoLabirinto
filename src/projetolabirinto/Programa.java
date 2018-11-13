@@ -5,8 +5,18 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author Dan
+ */
 public class Programa {
 
+    /**
+     *
+     * @param args
+     * @throws IOException
+     * @throws Exception
+     */
     public static void main(String[] args) throws IOException, Exception {
         try
         {
