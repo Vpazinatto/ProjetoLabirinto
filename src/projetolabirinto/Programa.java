@@ -10,13 +10,6 @@ import java.util.logging.Logger;
  * @author Daniel Carvalho de Moura
  */
 public class Programa {
-
-    /**
-     *
-     * @param args
-     * @throws IOException
-     * @throws Exception
-     */
     public static void main(String[] args) throws IOException, Exception {
         try
         {
