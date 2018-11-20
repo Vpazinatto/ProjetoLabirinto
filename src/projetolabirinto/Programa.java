@@ -18,9 +18,9 @@ public class Programa {
             Pilha<Coordenada> caminho = new Pilha<Coordenada> ();
             Pilha<Fila<Coordenada>> possibilidades = new Pilha<Fila<Coordenada>> ();
             BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("===============================================");
+            System.out.println("===================================================");
             System.out.println("Seja bem vindo ao Resolvedor de Labirintos");
-            System.out.println("===============================================");
+            System.out.println("===================================================");
             System.out.println("");
             
             for(;;)
