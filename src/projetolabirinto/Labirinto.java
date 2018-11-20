@@ -63,10 +63,11 @@ public class Labirinto {
      * 
      * @throws Exception se houver algum erro ao instânciar caminho, possibilidades ou o labirinto.
      */
-    public Labirinto() throws Exception
+    public Labirinto(String localArqv) throws Exception
     {
-      caminho = new Pilha<Coordenada> ();
-      possibilidades = new Pilha<Fila<Coordenada>> ();
+       this.montaLabirinto(localArqv);
+       caminho = new Pilha<Coordenada> ();
+       possibilidades = new Pilha<Fila<Coordenada>> ();
     }
     
     /**
@@ -78,7 +79,7 @@ public class Labirinto {
      * @author Daniel Carvalho de Moura 
      * 
      */    
-    public void setCaminho(Coordenada pos) 
+    private void setCaminho(Coordenada pos) 
     {
         this.labirinto[pos.getLinha()][pos.getColuna()] = '*';
     }
@@ -92,10 +93,13 @@ public class Labirinto {
      * @author  Vinicius Pazinatto
      * @author  Daniel Carvalho de Moura 
      * 
-     * @throws Exception se a entrada estiver numa posição inválida
+     * @throws Exception se a entrada estiver numa posição inválida ou o parâmetro for nulo ou vazio.
      */
-    public void montaLabirinto(String localLabirinto) throws Exception
+    private void montaLabirinto(String localLabirinto) throws Exception
     {
+        if (localLabirinto == null || localLabirinto.equals(""))
+            throw new Exception ("Local do labirinto nulo !");
+        
         BufferedReader entrada = new BufferedReader (new FileReader (localLabirinto));
         
         while (entrada.ready())
@@ -157,7 +161,7 @@ public class Labirinto {
     }
     
     /**
-     * ProcuraEntradaESaida, verifica se foi encontrada Entrada, se sim percorre o labirinto e valída se possui saida.
+     * ProcuraSaida, valida se foi encontrada saída.
      *
      * @return true se encontrou a saída, false se não
      * 
@@ -166,11 +170,8 @@ public class Labirinto {
      * 
      * @throws Exception se não tiver saída ou entrada, lança exceção
      */
-    public boolean procuraEntradaESaida() throws Exception
-    {
-        if (this.atual == null)
-          throw new Exception ("Labirinto inválido,não existe Entrada !");
-        
+    private boolean procuraSaida() throws Exception
+    {        
         for (int linha=0; linha<this.linhasQtd; linha++) {
             for (int coluna=0; coluna<this.colunasQtd; coluna++ ) 
             {
@@ -178,7 +179,7 @@ public class Labirinto {
                     return true;
             }
         }
-        throw new Exception ("Labirinto inválido,não existe Saída !");
+        return false;
     }
     
     /**
@@ -189,7 +190,7 @@ public class Labirinto {
      * 
      * @throws Exception se houver erro ao instânciar a fila
      */
-    public void procuraAdjacentes() throws Exception 
+    private void procuraAdjacentes() throws Exception 
     {
         fila = new Fila<Coordenada> ();
         
@@ -218,7 +219,7 @@ public class Labirinto {
      * 
      * @throws Exception se houver erros com os métodos de fila,pilha.
      */
-    public void preencheCaminho () throws Exception
+    private void preencheCaminho () throws Exception
     {
         //Modo progressivo
         for(;;)
@@ -241,6 +242,9 @@ public class Labirinto {
                 possibilidades.jogueUmItemFora();
             }     
 
+            if (fila.vazia())
+            throw new Exception ("Não existe solução para este labirinto !");
+            
             atual = fila.getUmItem();
             fila.jogueUmItemFora();
 
@@ -254,4 +258,20 @@ public class Labirinto {
                 return;
         }
     }
+    
+    /**
+     * ResolveLabirinto, executa os métodos necessários para resolver o labirinto.
+     * 
+     * @author Vinicius Pazinatto
+     * @author Daniel Carvalho de Moura
+     * 
+     * @throws Exception se houver erros com os métodos para resolução do labirinto.
+     */
+    public void resolveLabirinto () throws Exception
+    {
+        if (!this.procuraSaida())
+            throw new Exception ("O labirinto não possui saída válida !");
+        this.preencheCaminho();
+    }
+
 }
